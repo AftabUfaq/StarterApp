@@ -7,61 +7,60 @@ import { textStyles } from "../../styles";
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-const CandidateProfileCard = ({item, onPress=null}) => {
+const JobCard = ({item, onPress=null}) => {
  
     return(
         <TouchableOpacity 
             onPress={onPress}
             style={styles.main}>
-            
-            <Image 
-                style={{
-                    width:scale(99),
-                    height:scale(99),
-                    borderRadius:scale(4),
-                    resizeMode:"contain",
-                    
-                }}
-                source={{uri:item.image}}
-            />
-           
-            <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(155)}}>
-                <Text  numberOfLines={1} style={{...textStyles.Label,fontSize:scale(12), fontFamily:fonts.Bold}}>{item.name}</Text>
+             <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(55)}}>
+                <Text  
+                    numberOfLines={1} 
+                    style={{
+                        ...textStyles.Label,
+                        fontSize:scale(12), 
+                        fontFamily:fonts.Bold,
+                        color:"rgba(0,0,0,.7)"
+                    }}>
+                        {item.jobTitle}
+                </Text>
+              
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
-                        <Ionicons 
-                            name="mail" 
-                            color={"rgba(0,0,0,.8)"} 
+                        <FontAwesome5 
+                            name="building" 
+                            color={"rgba(0,0,0,.5)"} 
                             size={scale(12)} 
                         />
                     </View>
-                    <Text  numberOfLines={1} style={styles.text} >{item.email}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.company_name}</Text>
                 </View>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
-                        <Feather 
-                            name="phone" 
-                            color={"rgba(0,0,0,.8)"} 
+                        <FontAwesome5 
+                            name="user-alt" 
+                            color={"rgba(0,0,0,.5)"} 
                             size={scale(12)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.jobTitle}</Text>
+                    <Text  numberOfLines={1} style={styles.text} >{item.name}</Text>
                 </View>
+
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
                         <Ionicons 
                             name="location" 
-                            color={"rgba(0,0,0,.8)"} 
+                            color={"rgba(0,0,0,.5)"} 
                             size={scale(14)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.job_description}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.location}</Text>
                 </View>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
                         <FontAwesome5 
                             name="bolt" 
-                            color={"rgba(0,0,0,.8)"} 
+                            color={"rgba(0,0,0,.5)"} 
                             size={scale(14)} 
                         />
                     </View>
@@ -87,7 +86,7 @@ const CandidateProfileCard = ({item, onPress=null}) => {
     )
 }
 
-export default CandidateProfileCard
+export default JobCard
 
 const styles = StyleSheet.create({
     main:{
@@ -111,6 +110,7 @@ const styles = StyleSheet.create({
         ...textStyles.smallheading,
         includeFontPadding:false, 
         fontSize:scale(10),
+        color:"rgba(0,0,0,.5)",
         marginLeft:scale(5)
     },
     box_text:{

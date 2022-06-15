@@ -11,7 +11,13 @@ import Camera from '../assets/images/camera.svg'
 import Disk from '../assets/images/Disk.svg'
 import { textStyles } from "../styles";
 import { colors, fonts } from "../constants/theme";
-const UpLoadComponent = ({wdt= AppScreenWidth-scale(10),filepath, setFilePath}) => {
+const UpLoadComponent = ({
+    wdt= AppScreenWidth-scale(10),
+    filepath, setFilePath, 
+    title="Upload Document", 
+    placeholder="Click here to choose file",
+    guide_title="Support only doc, docx, pdf, rtf, txt and odt. Supports a maximum file size of 1 MB"
+}) => {
     const [isModalVisible,  setIsModalVisible] = useState(false)
     const Pickimage = () => {
         ImagePicker.openPicker({
@@ -59,7 +65,7 @@ const UpLoadComponent = ({wdt= AppScreenWidth-scale(10),filepath, setFilePath}) 
       }
     return(
         <View style={{...styles.mainView,  width:wdt, }}>
-            <Text style={styles.text}>Upload Document</Text>
+            <Text style={styles.text}>{title}</Text>
             <TouchableOpacity 
                 onPress={() => {
                     setIsModalVisible(true)
@@ -68,8 +74,19 @@ const UpLoadComponent = ({wdt= AppScreenWidth-scale(10),filepath, setFilePath}) 
                 <Text 
                     ellipsizeMode={"middle"}
                     numberOfLines={1}
-                    style={{...styles.textplaceholder, width:wdt-scale(45)}}>{filepath?.path === null ?"Click here to choose file":filepath?.name} </Text>
-                <View style={{width:scale(25),alignItems:"center", justifyContent:"center", height:scale(25)}}>
+                    style={{
+                        ...styles.textplaceholder, 
+                        width:wdt-scale(45)
+                    }}>
+                        {
+                            filepath?.path === null 
+                            ?
+                                placeholder
+                            :
+                            filepath?.name
+                        } 
+                </Text>
+                <View style={styles.iconbox}>
                     <Entypo 
                         size={scale(20)} 
                         name={"attachment"} 
@@ -77,6 +94,7 @@ const UpLoadComponent = ({wdt= AppScreenWidth-scale(10),filepath, setFilePath}) 
                     />
               </View>
             </TouchableOpacity>
+            <Text style={{...textStyles.errorText,marginTop:scale(5), alignSelf:"flex-start", textAlign:"left"}}>{guide_title}</Text>
             <Modal
                 style={{
                     justifyContent: 'flex-end',
@@ -108,7 +126,7 @@ const UpLoadComponent = ({wdt= AppScreenWidth-scale(10),filepath, setFilePath}) 
                         onPress={() => {
                             Pickimage()
                         }} >
-                        <FontAwesome size={scale(20)} name="image"  color={"#000380"} />
+                        <FontAwesome size={scale(20)} name="image"  color={"#0073B4"} />
                         <Text style={{...styles.upLoadText, color:colors.text_primary_color}}>Gallery</Text>
                     </TouchableOpacity>
 
@@ -167,7 +185,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:scale(10),
         height:scale(40),
         alignItems:"center",
-        marginTop:scale(10), 
+
         flexDirection:"row", 
         justifyContent:"space-between"
     },
@@ -206,6 +224,12 @@ const styles = StyleSheet.create({
         width:AppScreenWidth,
         borderRadius: scale(14),
         height: verticalScale(40),
-      },
+    },
+    iconbox:{
+        width:scale(25),
+        alignItems:"center", 
+        justifyContent:"center",
+        height:scale(25)
+    }
     
 })

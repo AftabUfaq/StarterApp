@@ -11,7 +11,12 @@ import Placement from '../assets/images/placement.svg'
 import Entypo from 'react-native-vector-icons/Entypo'
 import {MainRoutes} from '../constants/routes'
 import { scale } from "react-native-size-matters";
+import {useDispatch} from 'react-redux';
+import { Signout } from "../store/actions/LoginActions";
+
 const DrawerContentt = ({ navigation, props }) => {
+    const dispatch = useDispatch();
+    const  localSignout = () => dispatch(Signout(null))
     return (
         <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}}>
             <View style={styles.drawercontent}>  
@@ -185,6 +190,18 @@ const DrawerContentt = ({ navigation, props }) => {
                 </TouchableOpacity> 
                 
             </DrawerContentScrollView>
+            <TouchableOpacity  
+                onPress={() => localSignout() } 
+                style={styles.logoutbutton}>
+                <View style={{width:scale(20), height:scale(20)}} > 
+                    <Entypo 
+                        name="log-out" 
+                        color={colors.dark_primary_color} 
+                        size={scale(20)}
+                    />
+                </View>  
+                <Text style={{...styles.textStyle}}>Log Out</Text>
+                </TouchableOpacity>
         </SafeAreaView>
     )
 }
@@ -237,5 +254,14 @@ const styles = StyleSheet.create({
         fontFamily:fonts.Medium,
         fontSize:scale(12),
         color: colors.white
-    }
+    },
+    logoutbutton:{
+        marginLeft:scale(15),
+        marginBottom:scale(12),
+        flexDirection: 'row',
+        alignItems:"center", marginLeft:0,
+        paddingBottom:scale(10), 
+        paddingLeft:scale(15), 
+        backgroundColor:"#fff"
+    },
 })

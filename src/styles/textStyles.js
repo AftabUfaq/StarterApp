@@ -45,9 +45,16 @@ export const textStyles = StyleSheet.create({
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
+    skills_text:{
+        fontFamily:fonts.Medium,
+        fontSize:scale(11),
+        includeFontPadding:false,
+        color:colors.text_primary_color,
+        backgroundColor:"#0000",
+    },
     errorText:{
-        fontFamily:fonts.Regular,
-        fontSize:scale(12),
+        fontFamily:fonts.Medium,
+        fontSize:scale(10),
         color:colors.error_text,
         backgroundColor:"#0000",
     },

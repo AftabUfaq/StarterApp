@@ -2,13 +2,19 @@ import React from 'react';
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer'
 
+import CandidatesScreen from '../screens/CandidatesScreen';
+import AddCandidatesScreen from '../screens/CandidatesScreen/AddCandidateScreen';
+import CandidatesDetailsScreen from '../screens/CandidatesScreen/CandidateDetailScreen';
+
 import HomeScreen from '../screens/HomeScreen/index';
 import EditProfileScreen from '../screens/EditProfileScreen'
-
 import CompanyScreen from '../screens/CompanyScreen';
 import ContactScreen from '../screens/ContactScreen';
+
 import JobOrderScreen from '../screens/JobOrderScreen';
-import CandidatesScreen from '../screens/CandidatesScreen';
+import AddJobScreen from '../screens/JobOrderScreen/AddJobScreen'
+import JobDetailsScreen from '../screens/JobOrderScreen/JobDetailsScreen'
+
 import OnBoardingScreen from '../screens/OnBoardingScreen';
 import PlacementsScreen from '../screens/PlacementScreen';
 import TimeSheetScreen from '../screens/TimeSheetScreen';
@@ -67,6 +73,20 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+            <Stack.Screen 
+                name="AddJobScreen" 
+                component={AddJobScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="JobDetailsScreen" 
+                component={JobDetailsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
 
             <Stack.Screen 
                 name="CandidatesScreen" 
@@ -75,6 +95,22 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+
+            <Stack.Screen 
+                name="AddCandidatesScreen" 
+                component={AddCandidatesScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="CandidatesDetailsScreen" 
+                component={CandidatesDetailsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            
 
             <Stack.Screen 
                 name="OnBoardingScreen" 

@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Platform,
   TextInput,
   StyleSheet,
 } from 'react-native';
@@ -16,12 +15,9 @@ import {AppScreenWidth, width} from '../constants/sacling';
 import Animated, {
   LightSpeedInRight,
   LightSpeedOutLeft,
-  FadeOutDown,
-  FadeInDown,
 } from 'react-native-reanimated';
 import Menu, {
   renderers,
-  MenuProvider,
   MenuOptions,
   MenuOption,
   MenuTrigger,

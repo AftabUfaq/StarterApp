@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import {SafeAreaView,StatusBar, Text,View,FlatList} from 'react-native';
-import { commonStyles,textStyles } from '../../styles';
+import React from 'react';
+import {FlatList,SafeAreaView,StatusBar,TouchableOpacity,View,} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import { commonStyles} from '../../styles';
 import CustomHeader from '../../components/CustomHeader';
 import { colors, fonts } from '../../constants/theme';
 import CandidateProfileCard from './CandidateProfileCard'
 import {faker} from '@faker-js/faker';
+import { scale } from 'react-native-size-matters';
+import { MainRoutes } from '../../constants/routes';
  faker.seed(10);
     
     const CandidatesScreen = ({navigation}) => {
@@ -25,12 +28,13 @@ import {faker} from '@faker-js/faker';
                 return(
                     <CandidateProfileCard 
                         item={item}
+                        onPress={() => navigation.navigate(MainRoutes.CandidatesDetailsScreen)}
                     />
                 )
             
         }
         return (
-            <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
+            <SafeAreaView style={commonStyles.SafeAreaView} >
                 <StatusBar barStyle={"light-content"} />
                 <View style={commonStyles.container} >
                     <CustomHeader 
@@ -42,9 +46,16 @@ import {faker} from '@faker-js/faker';
                     <FlatList 
                         data={DATA}
                         renderItem={renderItem}
+                        showsVerticalScrollIndicator={false}
                     
                     />
+                    <TouchableOpacity 
+                        onPress={() => navigation.navigate("AddCandidatesScreen")}
+                        style={commonStyles.AddButton}>
+                        <AntDesign name={"pluscircle"} size={scale(35)} color={colors.dark_primary_color} />
+                    </TouchableOpacity>
                 </View>
+                
             </SafeAreaView>
             
         );

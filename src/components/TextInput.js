@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {View,Text,TouchableOpacity, TextInput} from 'react-native'
 import { scale, verticalScale } from "react-native-size-matters";
-import { width } from "../constants/sacling";
+import { AppScreenWidth, width } from "../constants/sacling";
 import { colors, fonts } from "../constants/theme";
 import Animated, {
    LightSpeedInRight, LightSpeedOutLeft, FadeOutDown, FadeInDown
@@ -14,6 +14,7 @@ const CustomTextInput = ({
             placeholder,
             errorMessage,
             editable=true,
+            TextInputwidth=AppScreenWidth,
             lableColor=colors.text_primary_color,
             borderWidth=0, 
             secureTextEntry = false, 
@@ -23,7 +24,7 @@ const CustomTextInput = ({
     return (
         <View 
             style={{ 
-                width:width-scale(20),
+                width:TextInputwidth,
                 justifyContent:"center",
                 borderWidth:0,  
                 alignSelf:"center",
@@ -51,11 +52,12 @@ const CustomTextInput = ({
                 onChangeText={(text) => onChangeText(text)}
                 style={{
                     backgroundColor:"#fff", 
-                    marginVertical:verticalScale(5),
+                    marginVertical:verticalScale(0),
                     width:width-scale(20), 
                     borderColor:colors.divide_color,
                     borderBottomWidth:1,
                     borderRadius:borderRadius,
+                    paddingVertical:0,
                     borderWidth:borderWidth,
                     height:verticalScale(40),
                     fontFamily:fonts.Medium,
