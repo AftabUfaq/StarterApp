@@ -32,16 +32,11 @@ const CustomTextInput = ({
                 paddingTop:scale(5), 
                 marginVertical:scale(0)
             }} >
-            { 
-                value !== "" && 
-                <Animated.Text 
-                    entering={FadeInDown} 
-                    exiting={FadeOutDown}
-                  
-                    style={{...textStyles.Label, color:lableColor}}>
+           
+                <Text style={{...textStyles.Label, color:lableColor}}>
                         {placeholder}
-                </Animated.Text>
-            }
+                </Text>
+           
             <View>
             <TextInput
                 secureTextEntry={eyeon}

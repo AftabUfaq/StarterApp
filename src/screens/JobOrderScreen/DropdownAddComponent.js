@@ -10,11 +10,11 @@ import CustomTextInput from '../../components/TextInput';
 import Modal from 'react-native-modal';
 import { AppScreenWidth, width } from '../../constants/sacling';
 import Spacer from '../../components/Spacer';
-    const DropdownAddComponent = ({placeholder,items,setItems,selectedItems,setSelectItems,isVisible,setIsVisible,company_name,setCompanyName}) => { 
+    const DropdownAddComponent = ({zIndex=100,placeholder,items,setItems,selectedItems,setSelectItems,isVisible,setIsVisible,company_name,setCompanyName}) => { 
        
         return (
-            <View style={commonStyles.container} >
-                    <Text style={{...textStyles.Label, color:"#fff"}} >Add {placeholder}</Text>
+            <View style={{marginTop:scale(5), zIndex:zIndex, backgroundColor:"#fff"}} >
+                    <Text style={{...textStyles.Label,marginLeft:scale(5), color:colors.dark_primary_color}} >Add {placeholder}</Text>
                     <View style={styles.mainRow} >
                         <SearchableDropdown
                             onItemSelect={(item) => {
@@ -40,7 +40,7 @@ import Spacer from '../../components/Spacer';
                     >
                         <AntDesign 
                             name={"plus"} 
-                            size={scale(35)} 
+                            size={scale(30)} 
                             color={colors.white} 
                         />
                     </TouchableOpacity>  
@@ -69,7 +69,7 @@ import Spacer from '../../components/Spacer';
                             borderWidth={1}
                             lableColor={colors.dark_primary_color}
                             borderRadius={scale(5)}
-                            width={AppScreenWidth-scale(20)}
+                         
                             onChangeText={text => {
                                 setCompanyName(text)
                             }}
@@ -103,13 +103,15 @@ export default DropdownAddComponent;
 const styles = StyleSheet.create({
     mainRow:{
         flexDirection:"row", 
+      
+       
         width:width-scale(10), 
         justifyContent:"space-evenly", 
         alignItems:"center",
         alignSelf:"center"
     },
     containerStyle:{
-        paddingVertical:scale(10),
+        
         zIndex:100, 
         width:width-scale(60)
     },
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
         style: {
             paddingVertical:scale(5),
             paddingHorizontal:scale(10),
-            borderWidth:scale(2),
+            borderWidth:scale(1),
             zIndex:100,
             borderColor: '#ccc',
             borderRadius:scale(5),
@@ -157,11 +159,11 @@ const styles = StyleSheet.create({
     },
     AddSquareButton:{
         zIndex:-1, 
-        width:scale(41), 
+        width:scale(35), 
         justifyContent:"center",
         alignItems:"center",
         borderRadius:scale(5),
-        height:scale(41), 
+        height:scale(35), 
         backgroundColor:colors.dark_primary_color
     },
     ModalMainView:{

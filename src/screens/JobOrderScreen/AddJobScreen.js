@@ -224,6 +224,7 @@ import DropdownAddComponent from './DropdownAddComponent';
                             errorMessage={""}
                         />
                         <DropdownAddComponent 
+                            zIndex={200}
                             placeholder={"company"}
                             items={companies}
                             setItems={setCompanies}
@@ -235,6 +236,7 @@ import DropdownAddComponent from './DropdownAddComponent';
                             setCompanyName={setCompanyName}
                         />
                         <DropdownAddComponent 
+                            zIndex={180}
                             placeholder={"contact"}
                             items={contacts}
                             setItems={setContacts}
@@ -246,6 +248,7 @@ import DropdownAddComponent from './DropdownAddComponent';
                             setCompanyName={setContactName}
                         />
                         <DropdownAddComponent 
+                            zIndex={170}
                             placeholder={"priority"}
                             items={priority}
                             setItems={setPrioritys}
@@ -343,12 +346,12 @@ import DropdownAddComponent from './DropdownAddComponent';
                             onAdd={(skill) => {
                                 let temp_skills = job_data.skills
                                 temp_skills.push(skill)
-                                setCandidateProfile({...job_data, skills:temp_skills})
+                                setJobData({...job_data, skills:temp_skills})
                             }}
                             onChangeText={index => {
                                 let temp_skills = job_data.skills
                                 delete temp_skills[index]
-                                setCandidateProfile({...job_data, skills:temp_skills})
+                                setJobData({...job_data, skills:temp_skills})
                             }}
                             errorMessage={""}
                         />
@@ -410,9 +413,17 @@ import DropdownAddComponent from './DropdownAddComponent';
                             company_name={Industry_name}
                             setCompanyName={setIndustryName}
                         />
+                        <Spacer height={scale(10)} />
+                        <View style={{alignSelf:"center"}}>
+                            <CustomButton 
+                                loading={false}
+                                loadingText={"Submitting"}
+                                onPress={() => alert("false")}
+                                text={"Save"}
+                            />
+                        </View>
+                        <Spacer height={scale(10)} />
                     </ScrollView>
-                   
-                    
                 </View>
             </SafeAreaView> 
         );
@@ -422,12 +433,3 @@ import DropdownAddComponent from './DropdownAddComponent';
 
 export default AddJobScreen;
 
-const styles = StyleSheet.create({
-    mainRow:{
-        flexDirection:"row", 
-        width:width-scale(10), 
-        justifyContent:"space-evenly", 
-        alignItems:"center",
-        alignSelf:"center"
-    }
-})
