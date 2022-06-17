@@ -48,7 +48,7 @@ const CustomTextInput = ({
                 style={{
                     backgroundColor:"#fff", 
                     marginVertical:verticalScale(0),
-                    width:width-scale(20), 
+                    width:TextInputwidth, 
                     borderColor:colors.divide_color,
                     borderBottomWidth:1,
                     borderRadius:borderRadius,
