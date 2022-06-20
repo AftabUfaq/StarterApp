@@ -10,9 +10,10 @@ import HomeScreen from '../screens/HomeScreen/index';
 import EditProfileScreen from '../screens/EditProfileScreen'
 
 import CompanyScreen from '../screens/CompanyScreen';
+import AddCompanyScreen from '../screens/CompanyScreen/AddCompanyScreen';
 
 import ContactScreen from '../screens/ContactScreen';
-import AddCompanyScreen from '../screens/CompanyScreen/AddCompanyScreen';
+import AddContactScreen from '../screens/ContactScreen/AddContactScreen';
 import JobOrderScreen from '../screens/JobOrderScreen';
 import AddJobScreen from '../screens/JobOrderScreen/AddJobScreen'
 import JobDetailsScreen from '../screens/JobOrderScreen/JobDetailsScreen'
@@ -77,6 +78,16 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+
+            <Stack.Screen 
+                name="AddContactScreen" 
+                component={AddContactScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+
 
             <Stack.Screen 
                 name="JobOrderScreen" 

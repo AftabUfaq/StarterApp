@@ -234,7 +234,7 @@ import { MainRoutes } from '../../constants/routes';
                         />
                         
                         <DropdownAddComponent 
-                            AddButtonPress={() => alert("company")}
+                            AddButtonPress={() => alert("contact")}
                             placeholder={"contact"}
                             items={contacts}
                             setItems={setContacts}

@@ -28,7 +28,7 @@ import Spacer from '../../components/Spacer';
             return(
                 <CompanyCard 
                     item={item}
-                    onPress={() => navigation.navigate(MainRoutes.JobDetailsScreen)}
+                   
                 />
             )
             

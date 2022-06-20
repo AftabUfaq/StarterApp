@@ -3,7 +3,7 @@ import {SafeAreaView,ScrollView,StatusBar,StyleSheet, Text,View} from 'react-nat
 import { commonStyles, textStyles} from '../../styles';
 import { colors } from '../../constants/theme';
 import { scale } from 'react-native-size-matters';
-import countires from './contries.json'
+import countires from '../../data/contries.json'
 import CustomButton from '../../components/Button';
 import CustomHeader from '../../components/CustomHeader';
 import CustomTextInput from '../../components/TextInput';
@@ -433,8 +433,8 @@ import { wp } from '../../constants/sacling';
                         />
                         
                         <DropdownAddComponent 
-                            show_add_button={true}
-                            width={wp(84)}
+                            show_add_button={false}
+                            width={wp(96)}
                             AddButtonPress={() => alert("company")}
                             placeholder={"country"}
                             items={countrys}
@@ -448,8 +448,8 @@ import { wp } from '../../constants/sacling';
                         />
 
                       <DropdownAddComponent 
-                            show_add_button={true}
-                            width={wp(84)}
+                            show_add_button={false}
+                            width={wp(96)}
                             AddButtonPress={() => alert("company")}
                             placeholder={"state"}
                             items={states}

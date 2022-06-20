@@ -10,6 +10,7 @@ export const AuthRoutes = {
 export const MainRoutes = {
     CandidatesScreen:"CandidatesScreen",
     AddCandidatesScreen:"AddCandidatesScreen",
+
     HomeScreen:"HomeScreen",
     EditProfileScreen:"EditProfileScreen",
 
@@ -17,6 +18,7 @@ export const MainRoutes = {
     AddCompanyScreen:"AddCompanyScreen",
     
     ContactScreen:"ContactScreen",
+    AddContactScreen:"AddContactScreen",
     CandidatesDetailsScreen:"CandidatesDetailsScreen",
 
     JobOrderScreen:"JobOrderScreen",

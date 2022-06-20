@@ -7,85 +7,87 @@ import { textStyles } from "../../styles";
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-const CompanyCard = ({item, onPress=null}) => {
+const CandidateProfileCard = ({item, onPress=null}) => {
  
     return(
         <TouchableOpacity 
             onPress={onPress}
             style={styles.main}>
-             <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(55)}}>
-                <Text  
-                    numberOfLines={1} 
-                    style={{
-                        ...textStyles.Label,
-                        fontSize:scale(12), 
-                        fontFamily:fonts.Bold,
-                        color:"rgba(0,0,0,.7)"
-                    }}>
-                        {item.company_name}
-                </Text>
-              
+            
+            <Image 
+                style={{
+                    width:scale(99),
+                    height:scale(99),
+                    borderRadius:scale(4),
+                    resizeMode:"contain",
+                    
+                }}
+                source={{uri:item.image}}
+            />
+           
+            <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(155)}}>
+                <Text  numberOfLines={1} style={{...textStyles.Label,fontSize:scale(12), fontFamily:fonts.Bold}}>{item.name}</Text>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="building" 
-                            color={"rgba(0,0,0,.5)"} 
+                        <Ionicons 
+                            name="mail" 
+                            color={"rgba(0,0,0,.8)"} 
                             size={scale(12)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.company_name}</Text>
+                    <Text  numberOfLines={1} style={styles.text} >{item.email}</Text>
                 </View>
-
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="user-alt" 
-                            color={"rgba(0,0,0,.5)"} 
+                        <Feather 
+                            name="phone" 
+                            color={"rgba(0,0,0,.8)"} 
                             size={scale(12)} 
                         />
                     </View>
-                    <Text  numberOfLines={1} style={styles.text} >{item.name}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.jobTitle}</Text>
                 </View>
-
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
                         <Ionicons 
                             name="location" 
-                            color={"rgba(0,0,0,.5)"} 
+                            color={"rgba(0,0,0,.8)"} 
                             size={scale(14)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.location}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.job_description}</Text>
                 </View>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
                         <FontAwesome5 
                             name="bolt" 
-                            color={"rgba(0,0,0,.5)"} 
+                            color={"rgba(0,0,0,.8)"} 
                             size={scale(14)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.periority}</Text>
-                </View>
-
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="bolt" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(14)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={{...styles.text, color:"#fff", paddingVertical:scale(2), borderRadius:3, backgroundColor:item.color,paddingHorizontal:scale(5)}} >{item.status}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.status}</Text>
                 </View>
 
             </View>
-            
+            <View style={{width:scale(30),marginLeft:scale(5),  justifyContent:"space-between"}}>
+                <View style={styles.box} >
+                    <Text style={styles.box_text} >P {( parseInt(Math.random()*10) + 1)}</Text>
+                </View>
+                <View style={{...styles.box, backgroundColor:"#A7E1DE"}} >
+                    <Text style={styles.box_text} >I-S {( parseInt(Math.random()*10) + 1)}</Text>
+                </View>
+                <View style={{...styles.box, backgroundColor:"#5BC0DE"}} >
+                    <Text style={styles.box_text} >C-S {( parseInt(Math.random()*10) + 1)}</Text>
+                </View>
+                <View style={{...styles.box, backgroundColor:"#F0AD4E"}} >
+                    <Text style={styles.box_text} >I {( parseInt(Math.random()*10) + 1)}</Text>
+                </View>
+            </View>
         </TouchableOpacity>
     )
 }
 
-export default CompanyCard
+export default CandidateProfileCard
 
 const styles = StyleSheet.create({
     main:{
@@ -109,7 +111,6 @@ const styles = StyleSheet.create({
         ...textStyles.smallheading,
         includeFontPadding:false, 
         fontSize:scale(10),
-        color:"rgba(0,0,0,.5)",
         marginLeft:scale(5)
     },
     box_text:{
