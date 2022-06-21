@@ -62,7 +62,7 @@ export const textStyles = StyleSheet.create({
         fontFamily:fonts.Regular,
         fontSize:scale(14),
         textAlign:"center",
-        color:"rgba(0,0,0,.2)",
+        color:"rgba(0,0,0,.5)",
         backgroundColor:"#0000",
     }
 })

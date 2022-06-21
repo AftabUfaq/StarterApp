@@ -6,9 +6,10 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from  'react-native-vector-icons/Entypo'
 import {colors, fonts} from '../constants/theme';
 import {scale, verticalScale} from 'react-native-size-matters';
 import {AppScreenWidth, width} from '../constants/sacling';
@@ -16,22 +17,16 @@ import Animated, {
   LightSpeedInRight,
   LightSpeedOutLeft,
 } from 'react-native-reanimated';
-import Menu, {
-  renderers,
-  MenuOptions,
-  MenuOption,
-  MenuTrigger,
-} from 'react-native-popup-menu';
 import {commonStyles, textStyles} from '../styles';
-const {ContextMenu} = renderers;
 const CustomHeader = ({
   title,
+  isdrawer,
   onPress,
   NotificationPress,
   FilterPress,
   SearchPress,
 }) => {
-  const [showmenu, setShowMenu] = useState(false);
+
   const [show_search, setShowSearch] = useState(false);
 
   if (show_search) {
@@ -63,39 +58,28 @@ const CustomHeader = ({
     return (
       <View style={{...commonStyles.hedaerWithIcons}}>
         <TouchableOpacity style={styles.menuButton} onPress={onPress}>
-          <AntDesign color={colors.white} name="menu-fold" size={scale(28)} />
+        {
+          isdrawer 
+              ? 
+                  <AntDesign color={colors.white} name="menu-fold"  size={scale(24)} />
+              : 
+
+                  <Entypo color={"#fff"} name="chevron-thin-left" size={scale(24)}  />
+          }
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.LeftIconView}>
+          
           <TouchableOpacity onPress={() => setShowSearch(!show_search)}>
             <FontAwesome name={'search'} color={'#fff'} size={scale(18)} />
           </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => setShowMenu(!showmenu)}>
-            <Menu
-              onBackdropPress={() => setShowMenu(!showmenu)}
-              renderer={ContextMenu}>
-              <MenuTrigger>
-                <FontAwesome name={'filter'} color={'#fff'} size={scale(18)} />
-              </MenuTrigger>
-              <MenuOptions customStyles={optionsStyles}>
-                <MenuOption
-                  customStyles={optionStyles}
-                  value={'All'}
-                  onSelect={() => FilterPress('All')}>
-                  <Text style={textStyles.Label}>All</Text>
-                </MenuOption>
-                <MenuOption
-                  customStyles={optionStyles}
-                  value="Unsubmitted"
-                  onSelect={() => FilterPress('Draft')}>
-                  <Text style={textStyles.Label}>Unsubmitted</Text>
-                </MenuOption>
-              </MenuOptions>
-            </Menu>
+          
+          <TouchableOpacity onPress={FilterPress}>
+          <FontAwesome name={'filter'} color={'#fff'} size={scale(18)} />
           </TouchableOpacity>
+         
           <TouchableOpacity onPress={NotificationPress}>
-            <Ionicons name={'notifications'} color={'#fff'} size={scale(18)} />
+            <Ionicons name={'widgets'} color={'#fff'} size={scale(18)} />
           </TouchableOpacity>
         </View>
       </View>
