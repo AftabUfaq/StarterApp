@@ -28,13 +28,13 @@ import { scale } from 'react-native-size-matters';
     const DashBoardScreen = ({navigation}) => {
         const layout = useWindowDimensions();
         const [index, setIndex] = React.useState(0);
-        const [show_filter_modal, setShowFilterModal] = useState(true)
+        const [show_filter_modal, setShowFilterModal] = useState(false)
         const [show_widget_modal , setShowWidgetModal] = useState(false)
         const [widgetData,  setWidgetData] = useState(widget_data)
         const [routes] = React.useState([
             {
                 key: 'DashboardAnaylyticsScreen', 
-                title: 'Dashboard & Analytics'
+                title: 'Analytics'
             },
             { 
                 key: 'ReportsScreen', 
@@ -45,7 +45,10 @@ import { scale } from 'react-native-size-matters';
                 title: 'Bulk Mail'
             },
         ]);
-
+        const [filters, setFilter] = useState([
+            "Yesterday", "Last 7 Days", "Last 14 Days", "Last Week", "Last 2 Week", "This Month", "Last 3 Months", "Last 6 Months", "Last 9 Months", "Last 12 Months", "Custom Range",
+        ])
+       
         const renderTabBar = props => (
             <TabBar
               {...props}
@@ -54,7 +57,7 @@ import { scale } from 'react-native-size-matters';
               renderLabel={({ route, focused, color }) => (
                 <Text 
                     numberOfLines={1}
-                    style={{ color:colors.white,fontFamily:fonts.Bold, }}>
+                    style={{ color:colors.white,fontFamily:fonts.Medium, }}>
                   {route.title}
                 </Text>
               )}
@@ -156,7 +159,18 @@ import { scale } from 'react-native-size-matters';
                                 <AntDesign name='closesquare'  size={scale(22)} color={"#000"} />
                             </TouchableOpacity>
                         </View>
-                        
+                        <FlatList 
+                            data={filters}
+                            renderItem={({item,index}) => {
+                                return(
+                                    <TouchableOpacity style={{...styles.ItemMainView,backgroundColor:"#e3e3e6", flexDirection:"column", padding:scale(5)}}>
+                                        <Text style={{...textStyles.Label,color:colors.dark_primary_color, textAlign:"center"}}>
+                                            {item}
+                                        </Text> 
+                                    </TouchableOpacity>
+                                )
+                            }}
+                        />
                     </View>
                 </Modal>
             </SafeAreaView>

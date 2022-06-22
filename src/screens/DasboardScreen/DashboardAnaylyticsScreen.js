@@ -1,124 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity, ScrollView } from 'react-native';
+import { 
+    VictoryBar, VictoryChart,VictoryContainer, 
+    VictoryTheme,VictoryAxis,VictoryLabel,
+    LineSegment, VictoryPie  
+} from "victory-native";
 import { scale, verticalScale } from 'react-native-size-matters';
 import { commonStyles,textStyles } from '../../styles';
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import { colors, fonts } from '../../constants/theme';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { width, wp } from '../../constants/sacling';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import {sales_slider, recruiter_slider} from './sales_slider'
     const DashboardAnaylyticsScreen = ({navigation}) => {
-        const sales_slider = 
-            {
-                title:"Sale Slider",
-                items:[
-                    {
-                        icon_name:"contacts",
-                        icon:<AntDesign name='contacts' size={scale(20)} color={"#fff"} />,
-                        title:"Contacts",
-                        bgColor:"#007998",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                       
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(20)} color={"#fff"} />,
-                        title:"Meetings",
-                        bgColor:"#8e7cc3",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                       
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Opportunities",
-                        bgColor:"#fdd752",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#a94442"
-                    },
-                    {
-                       
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Job Orders",
-                        bgColor:"#fa8564",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                        
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Placements",
-                        bgColor:"#27b10c",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    
-                ]
-            }
-            const recruiter_slider = 
-            {
-                title:"Recruiters Slider",
-                items:[
-                    {
-                       
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Assigned Jobs",
-                        bgColor:"#fa8564",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                       
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Shortlisted",
-                        bgColor:"#a64d79",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Contact Submission",
-                        bgColor:"#5bc0de",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#a94442"
-                    },
-                    {
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"InterView",
-                        bgColor:"#f0ad4e",
-                        count:"2",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    {
-                        icon:<MaterialCommunityIcons name='calendar-clock' size={scale(22)} color={"#fff"} />,
-                        title:"Placements",
-                        bgColor:"#27b10c",
-                        count:"1",
-                        percentage:"10%",
-                        arrow_icon:"arrow-up",
-                        arrow_icon_color:"#17a08c"
-                    },
-                    
-                ]
-            }
+        const data = [
+            { quarter:"Companies", earnings: .3 },
+            { quarter:"Contacts", earnings: .6 },
+            { quarter:"Meetings", earnings: .4 },
+            { quarter:"Opportunities", earnings: .5 },
+            { quarter:"Job Orders", earnings: .13 },
+            { quarter:"Candidates", earnings: .16 },
+            { quarter:"Interviews", earnings: .14 },
+            { quarter:"Placements", earnings: .19 },
+        ];
+        const colors = ["tomato", "orange", "gold", "cyan", "navy", "pink", "gray","red" ]
+        
 
         const ItemView = ({item}) => {
             return(
@@ -174,7 +79,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
                 <View style={commonStyles.container} >
-                    <View style={styles.container}>
+                    <ScrollView style={styles.container}>
                         <CardView 
                             title={sales_slider.title}
                             items={sales_slider.items}  
@@ -183,8 +88,122 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
                             title={recruiter_slider.title}
                             items={recruiter_slider.items}  
                         />
-                     
-                    </View>
+                        <View style={styles.CardView}>
+                            <Text style={styles.CardViewTitle}>General</Text>
+                            <VictoryChart
+                               
+                                height={wp(60)}
+                                width={wp(100)} 
+                                animate={{ 
+                                    duration: 1000,
+                                    onLoad: { duration: 1000 }
+                                }}
+                                theme={VictoryTheme.material}
+                            >
+                                <VictoryBar  
+                                    alignment={"start"}
+                                    data={data}
+                                    labels={({ datum }) => `${datum.earnings}`}
+                                    labelComponent={
+                                        <VictoryLabel 
+                                            style={{
+                                                fontFamily:fonts.Medium,
+                                                fontSize:scale(8),
+                                               
+                                            }} 
+                                           
+                                            dx={scale(6)}
+                                            dy={scale(-1)}
+                                        />
+                                  
+                                    }
+                                    style={{ 
+                                        data:{ 
+                                            fill: "#007998" 
+                                        },
+                                        labels: { fill: "white" }
+                                    }} 
+                                    x="quarter" 
+                                    y="earnings"
+                                />
+                                <VictoryAxis 
+                                    dependentAxis
+                                    gridComponent={<LineSegment type={"fill"} />}
+                                    tickValues={[.1, .2, .3, .4,.5,.6,.7,.8,.9,1]}
+                                    style={{  
+                                        axis: {
+                                            stroke:"rgba(0,0,0,.1)"
+                                        },
+                                        grid: {
+                                            stroke:"rgba(0,0,0,.1)", 
+                                            strokeWidth: 1, 
+                                            strokeDasharray:false
+                                        },
+                                        ticks: {stroke: "#0000", size:1},
+                                        tickLabels:{
+                                           
+                                            fontSize:scale(8),
+                                            fontFamily:fonts.Medium,
+                                        }
+                                    }}
+                                />
+                                <VictoryAxis
+                                    style={{ 
+                                        axis: {
+                                            stroke:"rgba(0,0,0,.1)"
+                                        }, 
+                                        grid: {
+                                            stroke:"#0000", 
+                                            strokeWidth: 1, 
+                                            strokeDasharray:false
+                                        },
+                                        ticks: {stroke: "#0000", size:10},
+                                        tickLabels:{
+                                            angle :-45,
+                                            fontSize:scale(8),
+                                            fontFamily:fonts.Medium,
+                                        }
+                                    }}
+                                />
+                            </VictoryChart>
+                        </View>
+                        
+                        <View style={styles.CardView}>
+                            <Text style={styles.CardViewTitle}>Activities</Text>
+                            <View style={{flexDirection:"row", flex:1,justifyContent:"space-between"}}>
+                              <View style={{width:wp(60),height:wp(60), backgroundColor:"#0000"}}>
+                                <VictoryPie   
+                                    data={data}
+                                    colorScale={colors}
+                                    height={wp(60)} 
+                                    padding={{ top:scale(10), bottom:scale(10), right:scale(10),left:scale(10) }}
+                                    width={wp(60)}
+                                    labels={() => null}
+                                    innerRadius={scale(30)} 
+                                    labelRadius={0}
+                                    x="quarter" 
+                                    style={{ labels: {display: "none" } }}
+                                    y="earnings"
+                                    
+                                >
+                                    <VictoryLabel active={false}/>
+                                </VictoryPie>
+                             </View>
+                             <View style={{width:wp(36), justifyContent:"space-evenly",  backgroundColor:"rgba(0,0,0,.02)"}}>
+                                {data.map((item, index) => {
+                                    return(
+                                        <View key={`${index}`} style={{flexDirection:"row", alignItems:"center"}}>
+                                            <View style={{width:wp(5),marginRight:wp(1), height:wp(5), borderRadius:wp(5), backgroundColor:colors[index]}} />
+                                            <Text style={{...styles.ItemViewTitle, fontFamily:fonts.Bold}} >{item.quarter}: </Text>
+                                            <Text style={styles.ItemViewTitle} >{item.earnings}</Text>
+                                        </View>
+                                    )
+                                })}
+                            </View>
+                            </View>
+                        </View>
+                        <View style={{height:scale(100)}} />
+                    </ScrollView>
                 </View>
             </SafeAreaView>
             
@@ -203,14 +222,16 @@ const styles = StyleSheet.create({
         alignSelf:"center", 
         marginTop:scale(5), 
         borderWidth:1,   
+        overflow:"hidden",
         borderRadius:scale(5),
         borderColor:"rgba(0,0,0,.1)"
     },
     CardViewTitle:{
         ...textStyles.Label,
-        color:colors.dark_primary_color,
+        color:colors.text_primary_color,
         includeFontPadding:false,
         borderBottomWidth:1,
+        fontFamily:fonts.Bold,
         borderColor:"rgba(0,0,0,.1)",
         padding:scale(5),
         width:wp(98)-2
@@ -218,8 +239,10 @@ const styles = StyleSheet.create({
     ItemView:{
         flexDirection:"row",
         elevation:2,
+       
         paddingHorizontal:scale(8),
         borderRadius:scale(5),
+        borderRightColor:"rgba(0,0,0,.1)",
         alignItems:"center", 
         margin:scale(5), 
         backgroundColor:"#fff", 
@@ -236,19 +259,19 @@ const styles = StyleSheet.create({
     countText:{
         ...textStyles.Label,
         fontFamily:fonts.Bold,
-        color:colors.dark_primary_color,
+        color:colors.text_primary_color,
         includeFontPadding:false,
         fontSize:scale(10),
     },
     ItemViewTitle:{
         ...textStyles.Label,
-        color:colors.dark_primary_color,
+        color:colors.text_primary_color,
         includeFontPadding:false,
         fontSize:scale(10)
     },
     ItemViewPercentage:{
         ...textStyles.Label,
-        color:colors.dark_primary_color,
+        color:colors.text_primary_color,
         includeFontPadding:false,
         marginLeft:scale(2),
         fontSize:scale(8)
