@@ -86,10 +86,10 @@ import { scale } from 'react-native-size-matters';
                 />
                 <Modal 
                     useNativeDriver={true}
-                    animationIn={"bounceIn"}
+                    animationIn={"fadeInUp"}
                     hideModalContentWhileAnimating={true}
                     animationInTiming={300}
-                    animationOut={"bounceOut"}
+                    animationOut={"fadeOutDown"}
                     animationOutTiming={300}
                     onBackButtonPress={() => setShowWidgetModal(false)}
                     style={{
@@ -139,10 +139,10 @@ import { scale } from 'react-native-size-matters';
                 </Modal>
                 <Modal 
                     useNativeDriver={true}
-                    animationIn={"bounceIn"}
+                    animationIn={"fadeInUp"}
                     hideModalContentWhileAnimating={true}
                     animationInTiming={300}
-                    animationOut={"bounceOut"}
+                    animationOut={"fadeOutDown"}
                     animationOutTiming={300}
                     onBackButtonPress={() => setShowFilterModal(false)}
                     style={{

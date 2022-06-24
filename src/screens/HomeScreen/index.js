@@ -50,7 +50,7 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                             <Text style={styles.textStyle}>Company</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
-                            onPress={() => navigation.navigate(MainRoutes.ContactScreen) } 
+                            onPress={() => navigation.navigate(MainRoutes.ContactScreen, {item:"I am a navigation prop"}) } 
                             style={styles.box} >
                             <FontAwesome5 
                                 name="user-tie" 

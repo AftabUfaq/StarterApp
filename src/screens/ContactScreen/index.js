@@ -10,8 +10,8 @@ import { scale } from 'react-native-size-matters';
 import { MainRoutes } from '../../constants/routes';
  faker.seed(10);
     
-    const ContactsScreen = ({navigation}) => {
-
+    const ContactsScreen = ({navigation, route}) => {
+        console.log(route.params.item);
         const DATA = [...Array(50).keys()].map((_, i) => {
             return {
                
