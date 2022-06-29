@@ -4,8 +4,8 @@ import {AuthRoutes} from '../../constants/routes';
 const SplashScreen = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace(AuthRoutes.SignInScreen)
-    }, 3000);
+      navigation.replace("PostsList")
+    }, 2000);
   }, []);
   return (
     <View style={styles.container} >

@@ -1,17 +1,21 @@
 import React from 'react';
 import MainApp from './src/navigation';
-import { PersistGate } from 'redux-persist/integration/react';
+
 import { MenuProvider } from 'react-native-popup-menu';
-import {store,persistor } from './src/store/index';
+import {store} from './src/store/store';
 import {Provider} from 'react-redux';
+import { extendedApiSlice } from './src/services/posts/postsSlice';
+import { usersApiSlice } from './src/services/users/usersSlice';
 const App = () => {
+    store.dispatch(extendedApiSlice.endpoints.getPosts.initiate());
+store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
     return (
         <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
+           
                 <MenuProvider>
                     <MainApp />
                 </MenuProvider>
-            </PersistGate>
+           
         </Provider>
     );
 };

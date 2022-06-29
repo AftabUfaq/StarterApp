@@ -12,11 +12,11 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import {MainRoutes} from '../constants/routes'
 import { scale } from "react-native-size-matters";
 import {useDispatch} from 'react-redux';
-import { Signout } from "../store/actions/LoginActions";
+//import { Signout } from "../store/actions/LoginActions";
 
 const DrawerContentt = ({ navigation, props }) => {
     const dispatch = useDispatch();
-    const  localSignout = () => dispatch(Signout(null))
+    // const  localSignout = () => dispatch(Signout(null))
     return (
         <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}}>
             <View style={styles.drawercontent}>  

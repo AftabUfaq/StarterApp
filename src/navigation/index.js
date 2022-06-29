@@ -1,27 +1,13 @@
 import React from 'react';
-import MainStack from './MainStack';
-import AuthStack from './AuthStack';
+import AuthStack from './ReduxStack';
 import {NavigationContainer} from '@react-navigation/native';
-import {StatusBar} from 'react-native';
-import { colors } from '../constants/theme';
-import {useSelector} from 'react-redux';
+import { StatusBar } from 'react-native';
+import  {colors} from '../constants/theme'
 const MainApp = () => {
-    const { is_logged_in} = useSelector(state => state.LoginReducer);
-   
     return(
         <NavigationContainer >
-            <StatusBar
-                backgroundColor={colors.dark_primary_color}
-                barStyle={'dark-content'}
-            />
-            {
-                is_logged_in
-                
-                ?
-                    <MainStack />
-                :
-                    <AuthStack />
-            }
+            <StatusBar backgroundColor={colors.dark_primary_color} />
+            <AuthStack />
         </NavigationContainer>
     )
 };
