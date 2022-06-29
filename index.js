@@ -12,6 +12,7 @@ LogBox.ignoreLogs([
   "NativeBase: The contrast ratio",
   "VirtualizedLists should never be nested",
   "Require cycle: node_modules/victory",
-  "equire cycle: node_modules\\victory-vendor"
+  "new NativeEventEmitter",
+  "require cycle: node_modules\\victory-vendor"
 ]);
 AppRegistry.registerComponent(appName, () => App);
