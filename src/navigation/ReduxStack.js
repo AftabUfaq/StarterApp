@@ -22,7 +22,7 @@ const options = {
             fontFamily:fonts.Bold
         }, 
 }
-const AuthStack = () => {
+const ReduxStack = () => {
     return(
         <Stack.Navigator
             initialRouteName='SplashScreen'
@@ -58,4 +58,4 @@ const AuthStack = () => {
     )
 }
 
-export default AuthStack
+export default ReduxStack

@@ -3,11 +3,8 @@ import {
     createEntityAdapter
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../api/apiSlice";
-
 const usersAdapter = createEntityAdapter()
-
 const initialState = usersAdapter.getInitialState()
-
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getUsers: builder.query({
@@ -19,22 +16,20 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 { type: 'User', id: "LIST" },
                 ...result.ids.map(id => ({ type: 'User', id }))
             ]
+        }),
+        getUserByUserId: builder.query({
+            query: id => `users/${id}`,
         })
     })
 })
 
-export const {
-    useGetUsersQuery
-} = usersApiSlice
+export const { useGetUsersQuery, useGetUserByUserIdQuery } = usersApiSlice
 
 // returns the query result object
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
 
 // Creates memoized selector
-const selectUsersData = createSelector(
-    selectUsersResult,
-    usersResult => usersResult.data // normalized state object with ids & entities
-)
+const selectUsersData = createSelector( selectUsersResult,usersResult => usersResult.data)
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
