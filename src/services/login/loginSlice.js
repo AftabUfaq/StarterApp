@@ -13,9 +13,20 @@ const initialState = usersAdapter.getInitialState({
     reducers: {
       logout: () => initialState,
       setUser: (state, action) => {
-        state.user = action.payload.user,
-        state.token = action.payload.token,
-        state.is_logged_in = true
+        console.log(action, "Meee");
+        switch(action.type){
+          case "userSlice/setUser":
+            return{
+              ...state,
+              user:action.payload.user,
+              token:action.payload.token,
+              is_logged_in:true
+            }
+          default :{
+            return state
+          }
+        }
+       
       },
     },
   });

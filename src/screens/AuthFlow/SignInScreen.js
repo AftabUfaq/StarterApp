@@ -22,12 +22,15 @@ import GOOGLE from '../../assets/images/google.svg';
 import CustomHeader from '../../components/CustomHeader';
 import MICROSOFT from '../../assets/images/microsoft.svg';
 import { useGetUserByUserIdQuery } from '../../services/users/usersSlice';
+import { setUser } from '../../services/login/loginSlice';
+import { useDispatch } from 'react-redux';
 const SignInScreen = ({navigation}) => {
   const [email_address, setUseremail] = useState('bacha@gmail.com'); 
   const [UseremailErrorMesage, setUseremailErrorMessaage] = useState('');
   const [password, setPassword] = useState('6n#1Np7{)L5y');
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
   const {
     data:data,
     isLoading,
@@ -35,12 +38,13 @@ const SignInScreen = ({navigation}) => {
     isError,
     error
 } = useGetUserByUserIdQuery(2);
-console.log(data,"Data User Object");
-console.log(isLoading,
-  "isLoading",
-  isSuccess, "isSuccess",
-  isError,"isError",
-  error,"error" );
+
+const LoginUser = () => {
+  dispatch(setUser({
+      user:data,
+      token:"this_is_token"
+    }))
+}
   return (
     <View style={commonStyles.container}>
         <CustomHeader 
@@ -81,7 +85,7 @@ console.log(isLoading,
 
         <Spacer />
         <CustomButton
-          onPress={() => submitdate()}
+          onPress={() => LoginUser()}
           loading={loading}
           text={'Login'}
           loadingText={'Processing'}
