@@ -33,6 +33,7 @@ import moment from 'moment';
             return(
                 <OnBoardingCard 
                     item={item}
+                    onPress={() => navigation.navigate(MainRoutes.OnBoardingDetailsScreen)}
                    
                 />
             )
@@ -56,7 +57,7 @@ import moment from 'moment';
                     />
                     
                     <TouchableOpacity 
-                        onPress={() => navigation.navigate(MainRoutes.AddCompanyScreen)}
+                        onPress={() => navigation.navigate(MainRoutes.AddonBoardingScreen)}
                         style={commonStyles.AddButton}>
                         <AntDesign name={"pluscircle"} size={scale(35)} color={colors.dark_primary_color} />
                     </TouchableOpacity>

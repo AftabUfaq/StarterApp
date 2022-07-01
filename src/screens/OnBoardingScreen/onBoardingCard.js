@@ -8,7 +8,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 const OnBoardingCard = ({item, onPress=null}) => {
- 
+   
     return(
         <TouchableOpacity 
             onPress={onPress}
