@@ -19,8 +19,16 @@ import AddJobScreen from '../screens/JobOrderScreen/AddJobScreen'
 import JobDetailsScreen from '../screens/JobOrderScreen/JobDetailsScreen'
 
 import OnBoardingScreen from '../screens/OnBoardingScreen';
+import AddonBoardingScreen from '../screens/OnBoardingScreen/AddonBoardingScreen';
+import OnBoardingDetailsScreen from '../screens/OnBoardingScreen/OnBoardingDetailsScreen';
+
+
 import PlacementsScreen from '../screens/PlacementScreen';
+import AddPlacementScreen from '../screens/PlacementScreen/AddPlacementScreen';
+import PlacementDetailsScreen from '../screens/PlacementScreen/PlacementDetailsScreen';
+
 import TimeSheetScreen from '../screens/TimeSheetScreen';
+
 import ExpensesScreen from '../screens/ExpensesScreen';
 import InvoicesScreen from '../screens/InvoicesScreen';
 import DashBoardScreen from '../screens/DasboardScreen';
@@ -142,10 +150,38 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+             <Stack.Screen 
+                name="AddonBoardingScreen" 
+                component={AddonBoardingScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+             <Stack.Screen 
+                name="OnBoardingDetailsScreen" 
+                component={OnBoardingDetailsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
 
             <Stack.Screen 
                 name="PlacementsScreen" 
                 component={PlacementsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="AddPlacementScreen" 
+                component={AddPlacementScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="PlacementDetailsScreen" 
+                component={PlacementDetailsScreen} 
                 options={{
                     headerShown:false
                 }}

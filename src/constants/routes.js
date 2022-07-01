@@ -26,7 +26,13 @@ export const MainRoutes = {
     JobDetailsScreen:"JobDetailsScreen",
 
     OnBoardingScreen:"OnBoardingScreen",
+    AddonBoardingScreen:"AddonBoardingScreen",
+    OnBoardingDetailsScreen:"OnBoardingDetailsScreen",
+
     PlacementsScreen:"PlacementsScreen",
+    AddPlacementScreen:"AddPlacementScreen",
+    PlacementDetailsScreen:"PlacementDetailsScreen",
+
     TimeSheetScreen:"TimeSheetScreen",
     ExpensesScreen:"ExpensesScreen",
     InvoicesScreen:"InvoicesScreen",

@@ -14,18 +14,18 @@ function Swiptbutton({onPress, title}) {
             maxHeight:50, 
             borderRadius:widthPercentageToDP(50),
             backgroundColor:"#0000",
-            width:widthPercentageToDP(90), 
+            width:widthPercentageToDP(86), 
             justifyContent:"center"
-            }}>
+          }}>
       <SwipeButton
-          width={wp(86)}
+          width={wp(84)}
           shouldResetAfterSuccess={true}
           resetAfterSuccessAnimDelay={20}
           resetAfterSuccessAnimDuration={20}
           containerStyles={{
-            width:widthPercentageToDP(88),
+            width:widthPercentageToDP(86),
             justifyContent:"center",
-            backgroundColor:"red",
+         
             alignItems:"center",
             borderWidth:0,
             height:50

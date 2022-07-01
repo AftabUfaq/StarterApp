@@ -8,7 +8,7 @@ import CompanyCard from './CompanyCard'
 import {faker} from '@faker-js/faker';
 import { scale } from 'react-native-size-matters';
 import { MainRoutes } from '../../constants/routes';
-import Spacer from '../../components/Spacer';
+
  faker.seed(10);
     
     const JobOrderScreen = ({navigation}) => {
