@@ -10,144 +10,38 @@ import CustomTextInput from '../../components/TextInput';
 import DropdownAddComponent from '../../components/DropdownAddComponent';
 import Spacer from '../../components/Spacer';
 import { MainRoutes } from '../../constants/routes';
+import { companies_data,contactsdata,Periortydata,technologydata,indstriesdata } from '../../data/data';
     const AddJobScreen = ({navigation}) => { 
         
        ///// ******        Companies Data             ****** /////
 
-        const [companies, setCompanies] = useState([
-            {
-              value: 1,
-              label: 'Zoobi Apps',
-            },
-            {
-              value: 2,
-              label: 'IFuture',
-            },
-            {
-              value: 3,
-              label: 'Codefreaks',
-            },
-            {
-              value: 4,
-              label: 'MetaFurture',
-            },
-            {
-              value: 5,
-              label: 'Right Source',
-            },
-           
-        ]);
+        const [companies, setCompanies] = useState(companies_data);
         const [selected_company, setSelectCompany] = useState("")
         const [companies_modal_visible, setCompaniesModalVisibe] = useState(false)
         const [company_name, setCompanyName] = useState("")
         
         //////******        Contacts Data             ****** //////////
 
-        const [contacts, setContacts] = useState([
-            {
-              value: 1,
-              label: 'Aftab Ameen',
-            },
-            {
-              value: 2,
-              label: 'Sajjad Ameen',
-            },
-            {
-              value: 3,
-              label: 'Abbas Ameen',
-            },
-            {
-              value: 4,
-              label: 'Tajul Amin',
-            },
-            {
-              value: 5,
-              label: 'Faryal Amin',
-            },
-           
-        ]);
+        const [contacts, setContacts] = useState(contactsdata);
         const [selected_contact, setSelectContact] = useState("")
         const [contacts_modal_visible, setContactsModalVisibe] = useState(false)
         const [contact_name, setContactName] = useState("")
 
         //////******        Periorty Data             ****** //////////
 
-        const [priority, setPrioritys] = useState([
-            {
-              value: 1,
-              label: 'Very High',
-            },
-            {
-              value: 2,
-              label: 'high',
-            },
-            {
-              value: 3,
-              label: 'Medium',
-            },
-            {
-              value: 4,
-              label: 'Low',
-            },
-            {
-              value: 5,
-              label: 'very low',
-            },
-           
-        ]);
+        const [priority, setPrioritys] = useState(Periortydata);
         const [selected_priority, setSelectPriority] = useState("")
         const [priority_modal_visible, setPrioritysModalVisibe] = useState(false)
         const [priority_name, setPriorityName] = useState("")
 
         //////******        Techology Data             ****** //////////
-        const [technologys, setTechnologys] = useState([
-            {
-              value: 1,
-              label: 'React-Native',
-            },
-            {
-              value: 2,
-              label: 'MongoDB',
-            },
-            {
-              value: 3,
-              label: 'VS Code',
-            },
-            {
-              value: 4,
-              label: 'XCode',
-            },
-            {
-              value: 5,
-              label: 'Data Analysis',
-            },
-           
-        ]);
+        const [technologys, setTechnologys] = useState(technologydata);
         const [selected_Technology, setSelectTechnology] = useState("")
         const [Technology_modal_visible, setTechnologysModalVisibe] = useState(false)
         const [Technology_name, setTechnologyName] = useState("")
 
         //////******        Industry Data             ****** //////////
-        const [Industrys, setIndustrys] = useState([
-            {
-              value: 1,
-              label: 'IT',
-            },
-            {
-              value: 2,
-              label: 'Telecommunication',
-            },
-            {
-              value: 3,
-              label: 'Engineering',
-            },
-            {
-              value: 4,
-              label: 'Medical',
-            },
-            
-           
-        ]);
+        const [Industrys, setIndustrys] = useState(indstriesdata);
         const [selected_Industry, setSelectIndustry] = useState("")
         const [Industry_modal_visible, setIndustrysModalVisibe] = useState(false)
         const [Industry_name, setIndustryName] = useState("")
@@ -198,7 +92,7 @@ import { MainRoutes } from '../../constants/routes';
                     <ScrollView 
                         keyboardShouldPersistTaps="always"
                         showsVerticalScrollIndicator={false} >
-                       <CustomTextInput
+                        <CustomTextInput
                             placeholder={'Job Id'}
                             value={job_data.job_id}
                             borderWidth={1}

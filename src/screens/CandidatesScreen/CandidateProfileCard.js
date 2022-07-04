@@ -7,83 +7,100 @@ import { textStyles } from "../../styles";
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 const CandidateProfileCard = ({item, onPress=null}) => {
- 
+    const rightButtons = () => {
+        return(
+            <View 
+                style={styles.ActionButtonRows}>
+                <TouchableOpacity
+                    style={{...styles.ActionButton,backgroundColor:colors.error_text}} 
+                    >
+                    <AntDesign name='delete' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.ActionButton}>
+                    <AntDesign name='edit' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
     return(
-        <TouchableOpacity 
-            onPress={onPress}
-            style={styles.main}>
+        <Swipeable 
+                childrenContainerStyle={styles.main} 
+                renderRightActions={rightButtons}>
             
-            <Image 
-                style={{
-                    width:scale(99),
-                    height:scale(99),
-                    borderRadius:scale(4),
-                    resizeMode:"contain",
-                    
-                }}
-                source={{uri:item.image}}
-            />
-           
-            <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(155)}}>
-                <Text  numberOfLines={1} style={{...textStyles.Label,fontSize:scale(12), fontFamily:fonts.Bold}}>{item.name}</Text>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <Ionicons 
-                            name="mail" 
-                            color={"rgba(0,0,0,.8)"} 
-                            size={scale(12)} 
-                        />
+                <Image 
+                    style={{
+                        width:scale(99),
+                        height:scale(99),
+                        borderRadius:scale(4),
+                        resizeMode:"contain",
+                        
+                    }}
+                    source={{uri:item.image}}
+                />
+            
+                <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(155)}}>
+                    <Text  numberOfLines={1} style={{...textStyles.Label,fontSize:scale(12), fontFamily:fonts.Bold}}>{item.name}</Text>
+                    <View style={styles.row_icon}>
+                        <View style={styles.icon_box} >
+                            <Ionicons 
+                                name="mail" 
+                                color={"rgba(0,0,0,.8)"} 
+                                size={scale(12)} 
+                            />
+                        </View>
+                        <Text  numberOfLines={1} style={styles.text} >{item.email}</Text>
                     </View>
-                    <Text  numberOfLines={1} style={styles.text} >{item.email}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <Feather 
-                            name="phone" 
-                            color={"rgba(0,0,0,.8)"} 
-                            size={scale(12)} 
-                        />
+                    <View style={styles.row_icon}>
+                        <View style={styles.icon_box} >
+                            <Feather 
+                                name="phone" 
+                                color={"rgba(0,0,0,.8)"} 
+                                size={scale(12)} 
+                            />
+                        </View>
+                        <Text numberOfLines={1} style={styles.text} >{item.jobTitle}</Text>
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.jobTitle}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <Ionicons 
-                            name="location" 
-                            color={"rgba(0,0,0,.8)"} 
-                            size={scale(14)} 
-                        />
+                    <View style={styles.row_icon}>
+                        <View style={styles.icon_box} >
+                            <Ionicons 
+                                name="location" 
+                                color={"rgba(0,0,0,.8)"} 
+                                size={scale(14)} 
+                            />
+                        </View>
+                        <Text numberOfLines={1} style={styles.text} >{item.job_description}</Text>
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.job_description}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="bolt" 
-                            color={"rgba(0,0,0,.8)"} 
-                            size={scale(14)} 
-                        />
+                    <View style={styles.row_icon}>
+                        <View style={styles.icon_box} >
+                            <FontAwesome5 
+                                name="bolt" 
+                                color={"rgba(0,0,0,.8)"} 
+                                size={scale(14)} 
+                            />
+                        </View>
+                        <Text numberOfLines={1} style={styles.text} >{item.status}</Text>
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.status}</Text>
-                </View>
 
-            </View>
-            <View style={{width:scale(30),marginLeft:scale(5),  justifyContent:"space-between"}}>
-                <View style={styles.box} >
-                    <Text style={styles.box_text} >P {( parseInt(Math.random()*10) + 1)}</Text>
                 </View>
-                <View style={{...styles.box, backgroundColor:"#A7E1DE"}} >
-                    <Text style={styles.box_text} >I-S {( parseInt(Math.random()*10) + 1)}</Text>
+                <View style={{width:scale(30),marginLeft:scale(5),  justifyContent:"space-between"}}>
+                    <View style={styles.box} >
+                        <Text style={styles.box_text} >P {( parseInt(Math.random()*10) + 1)}</Text>
+                    </View>
+                    <View style={{...styles.box, backgroundColor:"#A7E1DE"}} >
+                        <Text style={styles.box_text} >I-S {( parseInt(Math.random()*10) + 1)}</Text>
+                    </View>
+                    <View style={{...styles.box, backgroundColor:"#5BC0DE"}} >
+                        <Text style={styles.box_text} >C-S {( parseInt(Math.random()*10) + 1)}</Text>
+                    </View>
+                    <View style={{...styles.box, backgroundColor:"#F0AD4E"}} >
+                        <Text style={styles.box_text} >I {( parseInt(Math.random()*10) + 1)}</Text>
+                    </View>
                 </View>
-                <View style={{...styles.box, backgroundColor:"#5BC0DE"}} >
-                    <Text style={styles.box_text} >C-S {( parseInt(Math.random()*10) + 1)}</Text>
-                </View>
-                <View style={{...styles.box, backgroundColor:"#F0AD4E"}} >
-                    <Text style={styles.box_text} >I {( parseInt(Math.random()*10) + 1)}</Text>
-                </View>
-            </View>
-        </TouchableOpacity>
+           
+        </Swipeable>
     )
 }
 
@@ -94,7 +111,7 @@ const styles = StyleSheet.create({
         width:AppScreenWidth,
         elevation:2,
         marginHorizontal:scale(2),
-        marginTop:scale(5),
+        marginVertical:scale(5),
         backgroundColor:"#fff",
         padding:scale(5),
         justifyContent:"space-between",
@@ -133,5 +150,21 @@ const styles = StyleSheet.create({
         height:scale(15), 
         alignItems:"center", 
         justifyContent:"center"
+    },
+    ActionButtonRows:{ 
+        borderTopRightRadius:scale(5),
+        overflow:"hidden",
+        borderBottomRightRadius:scale(5),
+        justifyContent:"space-evenly", 
+        backgroundColor:"red", 
+        alignItems:"center",
+        marginVertical:scale(5)
+    },
+    ActionButton:{
+        paddingHorizontal:scale(10),
+        justifyContent:"center", 
+        alignItems:"center", 
+        flex:1, 
+        backgroundColor:"#e6a020"
     }
 })

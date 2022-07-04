@@ -105,7 +105,7 @@ import UpLoadComponent from '../../components/Uploadcomponent';
             return initialState
     }
   }
-    const AddonBoardingScreen = ({navigation}) => { 
+    const AddTimesheetScreen = ({navigation}) => { 
         const [onboarding_data, dispatch] = useReducer(reducer , initialState)
        
         return (
@@ -116,7 +116,7 @@ import UpLoadComponent from '../../components/Uploadcomponent';
                         show_backButton={true}
                         isdrawer={false}
                         onPress={() => navigation.goBack()}
-                        title={"Add OnBoarding"}
+                        title={"Add timesheet"}
                     />
                     <ScrollView 
                         keyboardShouldPersistTaps="always"
@@ -423,7 +423,7 @@ import UpLoadComponent from '../../components/Uploadcomponent';
 
 
 
-export default AddonBoardingScreen;
+export default AddTimesheetScreen;
 
 
 const styles= StyleSheet.create({

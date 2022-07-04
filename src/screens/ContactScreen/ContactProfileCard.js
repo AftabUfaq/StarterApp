@@ -7,13 +7,28 @@ import { textStyles } from "../../styles";
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 const CandidateProfileCard = ({item, onPress=null}) => {
- 
+    const rightButtons = () => {
+        return(
+            <View 
+                style={styles.ActionButtonRows}>
+                <TouchableOpacity
+                    style={{...styles.ActionButton,backgroundColor:colors.error_text}} 
+                    >
+                    <AntDesign name='delete' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.ActionButton}>
+                    <AntDesign name='edit' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
     return(
-        <TouchableOpacity 
-            onPress={onPress}
-            style={styles.main}>
-            
+        <Swipeable 
+                childrenContainerStyle={styles.main} 
+                renderRightActions={rightButtons}>
             <Image 
                 style={{
                     width:scale(99),
@@ -83,7 +98,7 @@ const CandidateProfileCard = ({item, onPress=null}) => {
                     <Text style={styles.box_text} >I {( parseInt(Math.random()*10) + 1)}</Text>
                 </View>
             </View>
-        </TouchableOpacity>
+        </Swipeable>
     )
 }
 
@@ -94,7 +109,7 @@ const styles = StyleSheet.create({
         width:AppScreenWidth,
         elevation:2,
         marginHorizontal:scale(2),
-        marginTop:scale(5),
+        marginVertical:scale(5),
         backgroundColor:"#fff",
         padding:scale(5),
         justifyContent:"space-between",
@@ -133,5 +148,21 @@ const styles = StyleSheet.create({
         height:scale(15), 
         alignItems:"center", 
         justifyContent:"center"
+    },
+    ActionButtonRows:{ 
+        borderTopRightRadius:scale(5),
+        overflow:"hidden",
+        borderBottomRightRadius:scale(5),
+        justifyContent:"space-evenly", 
+        backgroundColor:"red", 
+        alignItems:"center",
+        marginVertical:scale(5)
+    },
+    ActionButton:{
+        paddingHorizontal:scale(10),
+        justifyContent:"center", 
+        alignItems:"center", 
+        flex:1, 
+        backgroundColor:"#e6a020"
     }
 })

@@ -34,6 +34,8 @@ export const MainRoutes = {
     PlacementDetailsScreen:"PlacementDetailsScreen",
 
     TimeSheetScreen:"TimeSheetScreen",
+    AddTimesheetScreen:"AddTimesheetScreen",
+    
     ExpensesScreen:"ExpensesScreen",
     InvoicesScreen:"InvoicesScreen",
     DashBoardScreen:"DashBoardScreen",

@@ -4,15 +4,31 @@ import { scale } from "react-native-size-matters";
 import { AppScreenWidth } from "../../constants/sacling";
 import { colors, fonts } from "../../constants/theme";
 import { textStyles } from "../../styles";
-import Feather from 'react-native-vector-icons/Feather';
+
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 const OnBoardingCard = ({item, onPress=null}) => {
-   
+    const rightButtons = () => {
+        return(
+            <View 
+                style={styles.ActionButtonRows}>
+                <TouchableOpacity
+                    style={{...styles.ActionButton,backgroundColor:colors.error_text}} 
+                    >
+                    <AntDesign name='delete' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.ActionButton}>
+                    <AntDesign name='edit' color={colors.white} size={scale(22)} />
+                </TouchableOpacity>
+            </View>
+        )
+    }
     return(
-        <TouchableOpacity 
-            onPress={onPress}
-            style={styles.main}>
+        <Swipeable 
+            childrenContainerStyle={styles.main} 
+            renderRightActions={rightButtons}>
              <View style={{marginHorizontal:scale(5),width:AppScreenWidth-scale(55)}}>
                 <Text  
                     numberOfLines={1} 
@@ -122,7 +138,7 @@ const OnBoardingCard = ({item, onPress=null}) => {
 
             </View>
             
-        </TouchableOpacity>
+        </Swipeable>
     )
 }
 
@@ -133,7 +149,7 @@ const styles = StyleSheet.create({
         width:AppScreenWidth,
         elevation:2,
         marginHorizontal:scale(2),
-        marginTop:scale(5),
+        marginVertical:scale(5),
         backgroundColor:"#fff",
         padding:scale(5),
         justifyContent:"space-between",
@@ -173,5 +189,21 @@ const styles = StyleSheet.create({
         height:scale(15), 
         alignItems:"center", 
         justifyContent:"center"
+    },
+    ActionButtonRows:{ 
+        borderTopRightRadius:scale(5),
+        overflow:"hidden",
+        borderBottomRightRadius:scale(5),
+        justifyContent:"space-evenly", 
+        backgroundColor:"red", 
+        alignItems:"center",
+        marginVertical:scale(5)
+    },
+    ActionButton:{
+        paddingHorizontal:scale(10),
+        justifyContent:"center", 
+        alignItems:"center", 
+        flex:1, 
+        backgroundColor:"#e6a020"
     }
 })

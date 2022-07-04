@@ -28,6 +28,8 @@ import AddPlacementScreen from '../screens/PlacementScreen/AddPlacementScreen';
 import PlacementDetailsScreen from '../screens/PlacementScreen/PlacementDetailsScreen';
 
 import TimeSheetScreen from '../screens/TimeSheetScreen';
+import AddTimesheetScreen from '../screens/TimeSheetScreen/AddTimesheetScreen';
+
 
 import ExpensesScreen from '../screens/ExpensesScreen';
 import InvoicesScreen from '../screens/InvoicesScreen';
@@ -190,6 +192,13 @@ const MainStack = () => {
             <Stack.Screen 
                 name="TimeSheetScreen" 
                 component={TimeSheetScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+             <Stack.Screen 
+                name="AddTimesheetScreen" 
+                component={AddTimesheetScreen} 
                 options={{
                     headerShown:false
                 }}

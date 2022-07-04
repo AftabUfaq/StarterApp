@@ -4,11 +4,12 @@ import { scale } from "react-native-size-matters";
 import { AppScreenWidth } from "../../constants/sacling";
 import { colors, fonts } from "../../constants/theme";
 import { textStyles } from "../../styles";
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-const PlacementCard = ({item, onPress=null}) => {
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+const TimesheetCard = ({item, onPress=null}) => {
     const rightButtons = () => {
         return(
             <View 
@@ -80,47 +81,7 @@ const PlacementCard = ({item, onPress=null}) => {
                             size={scale(12)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.owner_name}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="user-alt" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(12)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.contact_name}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="user-alt" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(12)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.expense_report_manager}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="user-alt" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(12)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.placed_by}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <FontAwesome5 
-                            name="user-alt" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(12)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.expense_report_manager}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.total_hours} hours</Text>
                 </View>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
@@ -130,17 +91,7 @@ const PlacementCard = ({item, onPress=null}) => {
                             size={scale(14)} 
                         />
                     </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.join_date}</Text>
-                </View>
-                <View style={styles.row_icon}>
-                    <View style={styles.icon_box} >
-                        <Ionicons 
-                            name="calendar" 
-                            color={"rgba(0,0,0,.5)"} 
-                            size={scale(14)} 
-                        />
-                    </View>
-                    <Text numberOfLines={1} style={styles.text} >{item.release_date}</Text>
+                    <Text numberOfLines={1} style={styles.text} >{item.week_start}</Text>
                 </View>
                 <View style={styles.row_icon}>
                     <View style={styles.icon_box} >
@@ -191,7 +142,7 @@ const PlacementCard = ({item, onPress=null}) => {
     )
 }
 
-export default PlacementCard
+export default TimesheetCard
 
 const styles = StyleSheet.create({
     main:{
