@@ -2,28 +2,37 @@ import React, { useEffect, useState } from 'react';
 import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity,useWindowDimensions, ScrollView } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { commonStyles,textStyles } from '../../styles';
-
+import { useNavigation } from '@react-navigation/native';
 import { colors, fonts } from '../../constants/theme';
 import { AppScreenWidth, hp, width, wp } from '../../constants/sacling';
 import reports_data from './reports'
- const ReportsScreen = ({navigation}) => {
-      
+ const ReportsScreen = () => {
+    const navigation = useNavigation();
+ 
         return (
             <SafeAreaView style={{flex:1, backgroundColor:colors.white}} >
                 <StatusBar barStyle={"light-content"} />
                 <View style={commonStyles.container} >
-                    <ScrollView style={styles.mainView}>
+                    <ScrollView 
+                        showsHorizontalScrollIndicator={false} 
+                        showsVerticalScrollIndicator={false} 
+                        style={styles.mainView}
+                        >
                         {
                             reports_data.map((item_array, index) => {
                                 return(
                                     <View key={`${index}`} style={styles.CardView}>
                                         <Text style={styles.CardViewTitle}>{item_array.title}</Text>
                                         <View>
-                                            <ScrollView horizontal={true} >
+                                            <ScrollView 
+                                                showsHorizontalScrollIndicator={false} 
+                                                showsVerticalScrollIndicator={false} 
+                                                horizontal={true}
+                                                >
                                                 {
                                                     item_array.items.map((item, i) =>{
                                                         return(
-                                                            <TouchableOpacity key={`${i}`} style={styles.ItemView}>
+                                                            <TouchableOpacity onPress={() => navigation.navigate(item.route_name)} key={`${i}`} style={styles.ItemView}>
                                                                   <View style={{...styles.IconBgView,        borderRadius:scale(25), overflow:"hidden", backgroundColor:item.bgColor}}>
                                                                         {item.icon}
                                                                     </View>

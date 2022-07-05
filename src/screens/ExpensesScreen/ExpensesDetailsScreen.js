@@ -21,7 +21,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomHeader from '../../components/CustomHeader';
 import {colors, fonts} from '../../constants/theme';
 import {scale, verticalScale} from 'react-native-size-matters';
-import OnBoardingCard from './onBoardingCard';
+import ExpensesCard from './ExpensesCard';
 import {AppScreenWidth, width} from '../../constants/sacling';
 import Menu, {
   renderers,
@@ -30,7 +30,7 @@ import Menu, {
   MenuTrigger,
 } from 'react-native-popup-menu';
 const {ContextMenu} = renderers;
-const OnBoardingDetailsScreen = ({navigation}) => {
+const ExpensesDetailsScreen = ({navigation}) => {
   const onboarding_data = {
     candidate_name: 'Jackie Reynolds',
     color: '#1CAF9A',
@@ -119,9 +119,9 @@ const OnBoardingDetailsScreen = ({navigation}) => {
           show_backButton={true}
           isdrawer={false}
           onPress={() => navigation.goBack()}
-          title={'onBoarding Details'}
+          title={'Expenses Details'}
         />
-        <OnBoardingCard item={onboarding_data} />
+        <ExpensesCard item={onboarding_data} />
         <View style={styles.tabView}>
           <FlatList
             horizontal={true}
@@ -301,7 +301,7 @@ const OnBoardingDetailsScreen = ({navigation}) => {
   );
 };
 
-export default OnBoardingDetailsScreen;
+export default ExpensesDetailsScreen;
 
 const styles = StyleSheet.create({
   menu_row_icons: {

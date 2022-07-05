@@ -14,10 +14,6 @@ import { scale } from 'react-native-size-matters';
                     onPress={() => navigation.openDrawer()}
                     title={"Time Sheet"}
                 />
-                <Text style={textStyles.title} >Welcome to</Text>
-                <Text style={textStyles.heading} >Recruit BPM</Text>
-                <View style={{height:scale(20)}} />
-               
             </View>
         );
     };

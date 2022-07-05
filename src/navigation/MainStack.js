@@ -29,14 +29,32 @@ import PlacementDetailsScreen from '../screens/PlacementScreen/PlacementDetailsS
 
 import TimeSheetScreen from '../screens/TimeSheetScreen';
 import AddTimesheetScreen from '../screens/TimeSheetScreen/AddTimesheetScreen';
-
+import TimeSheetDetailsScreen from '../screens/TimeSheetScreen/TimeSheetDetailsScreen';
 
 import ExpensesScreen from '../screens/ExpensesScreen';
+import ExpensesAddScreen from '../screens/ExpensesScreen/ExpensesAddScreen';
+import ExpensesDetailsScreen from '../screens/ExpensesScreen/ExpensesDetailsScreen';
+
+
 import InvoicesScreen from '../screens/InvoicesScreen';
 import DashBoardScreen from '../screens/DasboardScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
+// Reports Scrreens
 
+import CommissionReportScreen from '../screens/ReportsScreens/CommissionReportScreen';
+import CompaniesActivityScreen from '../screens/ReportsScreens/CompaniesActivityScreen';
+import CurrentPlacementScreen from '../screens/ReportsScreens/CurrentPlacementScreen';
+import EqualEmploymentOpportunityScreen from '../screens/ReportsScreens/EqualEmploymentOpportunityScreen';
+import JobOrdersActivityScreen from '../screens/ReportsScreens/JobOrdersActivityScreen';
+import PlacementDetailScreen from '../screens/ReportsScreens/PlacementDetailScreen';
+import RecruiterContactSubmissionScreen from '../screens/ReportsScreens/RecruiterContactSubmissionScreen';
+import RecruiterInternalSubmissionScreen from '../screens/ReportsScreens/RecruiterInternalSubmissionScreen';
+import RecruitersKPIsSummaryScreen from '../screens/ReportsScreens/RecruitersKPIsSummaryScreen';
+import SourcerPipelineScreen from '../screens/ReportsScreens/SourcerPipelineScreen';
+import UserActivityDetailsScreen from '../screens/ReportsScreens/UserActivityDetailsScreen';
+import UserActivitySummaryScreen from '../screens/ReportsScreens/UserActivitySummaryScreen';
+import UserAnalyticalReportScreen from '../screens/ReportsScreens/UserAnalyticalReportScreen';
 
 import DrawerContent from './DrawerContent';
 const Stack = createNativeStackNavigator();
@@ -47,6 +65,7 @@ const MainStack = () => {
         <Stack.Navigator
             initialRouteName='HomeScreen'
         >
+            
             <Stack.Screen 
                 name="HomeScreen" 
                 component={HomeScreen} 
@@ -152,14 +171,15 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
-             <Stack.Screen 
+
+            <Stack.Screen 
                 name="AddonBoardingScreen" 
                 component={AddonBoardingScreen} 
                 options={{
                     headerShown:false
                 }}
             />
-             <Stack.Screen 
+            <Stack.Screen 
                 name="OnBoardingDetailsScreen" 
                 component={OnBoardingDetailsScreen} 
                 options={{
@@ -196,17 +216,40 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
-             <Stack.Screen 
+            <Stack.Screen 
                 name="AddTimesheetScreen" 
                 component={AddTimesheetScreen} 
                 options={{
                     headerShown:false
                 }}
             />
+            <Stack.Screen 
+                name="TimeSheetDetailsScreen" 
+                component={TimeSheetDetailsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+
 
             <Stack.Screen 
                 name="ExpensesScreen" 
                 component={ExpensesScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="ExpensesAddScreen" 
+                component={ExpensesAddScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="ExpensesDetailsScreen" 
+                component={ExpensesDetailsScreen} 
                 options={{
                     headerShown:false
                 }}
@@ -236,7 +279,97 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
-            
+            <Stack.Screen 
+                name="UserAnalyticalReportScreen" 
+                component={UserAnalyticalReportScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="UserActivitySummaryScreen" 
+                component={UserActivitySummaryScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="UserActivityDetailsScreen" 
+                component={UserActivityDetailsScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="SourcerPipelineScreen" 
+                component={SourcerPipelineScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="RecruitersKPIsSummaryScreen" 
+                component={RecruitersKPIsSummaryScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="RecruiterInternalSubmissionScreen" 
+                component={RecruiterInternalSubmissionScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="RecruiterContactSubmissionScreen" 
+                component={RecruiterContactSubmissionScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="PlacementDetailScreen" 
+                component={PlacementDetailScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="JobOrdersActivityScreen" 
+                component={JobOrdersActivityScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="EqualEmploymentOpportunityScreen" 
+                component={EqualEmploymentOpportunityScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="CurrentPlacementScreen" 
+                component={CurrentPlacementScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="CompaniesActivityScreen" 
+                component={CompaniesActivityScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="CommissionReportScreen" 
+                component={CommissionReportScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
             
         </Stack.Navigator>
     )

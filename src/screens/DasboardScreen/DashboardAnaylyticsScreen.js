@@ -44,7 +44,10 @@ import HalfPieChart from './HalfPieChart'
         return(
             <View style={styles.CardView}>
                 <Text style={styles.CardViewTitle}>{title}</Text>
-                <ScrollView horizontal={true} >
+                <ScrollView 
+                    showsHorizontalScrollIndicator={false} 
+                    showsVerticalScrollIndicator={false}
+                    horizontal={true} >
                     {
                         items.map((item, index) => {
                             return(
@@ -85,7 +88,10 @@ import HalfPieChart from './HalfPieChart'
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
                 <View style={commonStyles.container} >
-                    <ScrollView style={styles.container}>
+                    <ScrollView 
+                        showsHorizontalScrollIndicator={false} 
+                        showsVerticalScrollIndicator={false}
+                        style={styles.container}>
                         <CardView 
                             title={sales_slider.title}
                             items={sales_slider.items}  
