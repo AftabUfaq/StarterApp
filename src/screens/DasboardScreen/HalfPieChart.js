@@ -49,8 +49,7 @@ const HalfPieChart = ({data, colors}) => {
 }
 
 const areEqual = (prevProps, nextProps) => {
-    console.log(prevProps,"prevPropsprevPropsprevPropsprevPropsprevProps");
-    console.log(nextProps, "nextPropsnextPropsnextPropsnextPropsnextProps");
+   
     if (prevProps.data === nextProps.data && prevProps.colors === nextProps.colors) {
       return true                                    // donot re-render
     }

@@ -22,47 +22,33 @@ import UserActivitySummaryScreen from '../screens/ReportsScreens/UserActivitySum
 import UserAnalyticalReportScreen from '../screens/ReportsScreens/UserAnalyticalReportScreen';
 
 export const MainRoutes = {
-
     CandidatesScreen:"CandidatesScreen",
     AddCandidatesScreen:"AddCandidatesScreen",
-
     HomeScreen:"HomeScreen",
     EditProfileScreen:"EditProfileScreen",
-
     CompanyScreen:"CompanyScreen",
     AddCompanyScreen:"AddCompanyScreen",
-    
     ContactScreen:"ContactScreen",
     AddContactScreen:"AddContactScreen",
     CandidatesDetailsScreen:"CandidatesDetailsScreen",
-
     JobOrderScreen:"JobOrderScreen",
     AddJobScreen:"AddJobScreen",
     JobDetailsScreen:"JobDetailsScreen",
-
     OnBoardingScreen:"OnBoardingScreen",
     AddonBoardingScreen:"AddonBoardingScreen",
     OnBoardingDetailsScreen:"OnBoardingDetailsScreen",
-
     PlacementsScreen:"PlacementsScreen",
     AddPlacementScreen:"AddPlacementScreen",
     PlacementDetailsScreen:"PlacementDetailsScreen",
-
     TimeSheetScreen:"TimeSheetScreen",
     AddTimesheetScreen:"AddTimesheetScreen",
     TimeSheetDetailsScreen:"TimeSheetDetailsScreen",
-
     ExpensesScreen:"ExpensesScreen",
     ExpensesAddScreen:"ExpensesAddScreen",
     ExpensesDetailsScreen:"ExpensesDetailsScreen",
-
-    
     InvoicesScreen:"InvoicesScreen",
-    
-    
     DashBoardScreen:"DashBoardScreen",
     SettingsScreen:"SettingsScreen",
-    
     CommissionReportScreen:"CommissionReportScreen",
     CompaniesActivityScreen:"CompaniesActivityScreen",
     EqualEmploymentOpportunityScreen:"EqualEmploymentOpportunityScreen",

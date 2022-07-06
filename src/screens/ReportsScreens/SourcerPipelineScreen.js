@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView,View,StyleSheet,Platform,SafeAreaView, Text,Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {ScrollView,View,SafeAreaView} from 'react-native';
 import CustomStatusBar from '../../components/StatusBar';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import CustomHeader from '../../components/CustomHeader';
-import { commonStyles,selectStyles, textStyles } from '../../styles';
+import CustomHeader from '../../components/SearchHeader';
+import { commonStyles} from '../../styles';
+import FiltersComponent from './FiltersComponent';
+import TableRow from './TableRow';
 
-const SourcerPipelineScreen = () => {
+const SourcerPipelineScreen =  ({navigation})  => {
   return (
     <SafeAreaProvider>
       <CustomStatusBar />  
@@ -16,6 +18,22 @@ const SourcerPipelineScreen = () => {
               onPress={() =>  navigation.goBack()}
               title={"Sourcer Pipeline"}
           />
+           <FiltersComponent />
+            <View style={{height:10}} />
+              <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{alignItems:"center",justifyContent:"center", }} >
+                <TableRow  />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+
+                <TableRow />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+               
+              </ScrollView>
         </SafeAreaView>
     </SafeAreaProvider>
   )

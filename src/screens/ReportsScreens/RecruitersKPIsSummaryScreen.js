@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView,View,StyleSheet,Platform,SafeAreaView, Text,Image, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {ScrollView,View,SafeAreaView} from 'react-native';
 import CustomStatusBar from '../../components/StatusBar';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import CustomHeader from '../../components/CustomHeader';
-import { commonStyles,selectStyles, textStyles } from '../../styles';
-
-const RecruitersKPIsSummaryScreen = () => {
+import CustomHeader from '../../components/SearchHeader';
+import { commonStyles} from '../../styles';
+import FiltersComponent from './FiltersComponent';
+import TableRow from './TableRow';
+const RecruitersKPIsSummaryScreen =  ({navigation})  => {
   return (
     <SafeAreaProvider>
       <CustomStatusBar />  
@@ -16,6 +17,22 @@ const RecruitersKPIsSummaryScreen = () => {
               onPress={() =>  navigation.goBack()}
               title={"Recruiters KPIs Summary"}
           />
+           <FiltersComponent />
+            <View style={{height:10}} />
+              <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{alignItems:"center",justifyContent:"center", }} >
+                <TableRow  />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+
+                <TableRow />
+                <View style={{height:10}} />
+                <TableRow />
+                <View style={{height:10}} />
+               
+              </ScrollView>
         </SafeAreaView>
     </SafeAreaProvider>
   )

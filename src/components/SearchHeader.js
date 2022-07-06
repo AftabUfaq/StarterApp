@@ -25,6 +25,9 @@ const CustomHeader = ({
   NotificationPress,
   FilterPress,
   SearchPress,
+  issearch = true,
+  isfilter = true,
+  iswidgets = true
 }) => {
 
   const [show_search, setShowSearch] = useState(false);
@@ -55,7 +58,7 @@ const CustomHeader = ({
       </View>
     );
   } else {
-    return (
+   return (
       <View style={{...commonStyles.hedaerWithIcons}}>
         <TouchableOpacity style={styles.menuButton} onPress={onPress}>
         {
@@ -68,19 +71,20 @@ const CustomHeader = ({
           }
         </TouchableOpacity>
         <Text style={styles.title}>{title}</Text>
-        <View style={styles.LeftIconView}>
+          <View style={{...styles.LeftIconView,paddingRight:(issearch && isfilter && iswidgets) ? 0:scale(15), justifyContent:issearch && isfilter && iswidgets ? "space-around":"flex-end"}}>
+            
+           {issearch && <TouchableOpacity onPress={() => setShowSearch(!show_search)}>
+              <FontAwesome name={'search'} color={'#fff'} size={scale(22)} />
+            </TouchableOpacity> }
+            
+          {isfilter &&  <TouchableOpacity onPress={FilterPress}>
+            <FontAwesome name={'filter'} color={'#fff'} size={scale(18)} />
+            </TouchableOpacity> }
           
-          <TouchableOpacity onPress={() => setShowSearch(!show_search)}>
-            <FontAwesome name={'search'} color={'#fff'} size={scale(18)} />
-          </TouchableOpacity>
-          
-          <TouchableOpacity onPress={FilterPress}>
-          <FontAwesome name={'filter'} color={'#fff'} size={scale(18)} />
-          </TouchableOpacity>
-         
-          <TouchableOpacity onPress={NotificationPress}>
-            <Ionicons name={'widgets'} color={'#fff'} size={scale(18)} />
-          </TouchableOpacity>
+          {iswidgets &&   <TouchableOpacity onPress={NotificationPress}>
+              <Ionicons name={'widgets'} color={'#fff'} size={scale(18)} />
+            </TouchableOpacity>
+          }
         </View>
       </View>
     );
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     alignSelf: 'center',
     height: verticalScale(35),
-    width: width - scale(10),
+    width: width - scale(12),
   },
   TextInput: {
     paddingTop: 0,
@@ -138,36 +142,12 @@ const styles = StyleSheet.create({
   LeftIconView: {
     flexDirection: 'row',
     width: width / 3,
+    alignItems:"center",
     justifyContent: 'space-around',
   },
 });
 
-const optionsStyles = {
-  optionsContainer: {
-    backgroundColor: '#fff',
-    padding: 5,
-  },
-  optionsWrapper: {
-    backgroundColor: '#fff',
-  },
-  optionWrapper: {
-    backgroundColor: '#fff',
-    margin: 5,
-  },
-  optionText: {
-    color: '#fff',
-  },
-};
 
-const optionStyles = {
-  optionTouchable: {
-    underlayColor: '#fff',
-    activeOpacity: 40,
-  },
-  optionWrapper: {
-    backgroundColor: '#fff',
-    margin: 5,
-  },
-};
+
 
 export default CustomHeader;

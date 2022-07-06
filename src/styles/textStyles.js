@@ -18,6 +18,7 @@ export const textStyles = StyleSheet.create({
     smallheading:{
         fontFamily:fonts.Medium,
         fontSize:scale(14),
+        includeFontPadding:false,
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
@@ -36,6 +37,7 @@ export const textStyles = StyleSheet.create({
     Label:{
         fontFamily:fonts.Medium,
         fontSize:scale(12),
+        includeFontPadding:false,
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
@@ -64,5 +66,12 @@ export const textStyles = StyleSheet.create({
         textAlign:"center",
         color:"rgba(0,0,0,.5)",
         backgroundColor:"#0000",
+    },
+    tableLabel:{
+        fontFamily:fonts.Medium,
+        fontSize:scale(10),
+        color:colors.text_primary_color,
+        backgroundColor:"#0000",
+        includeFontPadding:false
     }
 })
