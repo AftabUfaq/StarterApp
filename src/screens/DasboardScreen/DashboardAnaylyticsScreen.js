@@ -1,14 +1,15 @@
-import React, {memo, useMemo, useEffect, useState } from 'react';
-import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity, ScrollView } from 'react-native';
+import React, {memo, useMemo,Suspense, useEffect, useState } from 'react';
+import {SafeAreaView,StatusBar,ActivityIndicator, Text,View,StyleSheet,TouchableOpacity, ScrollView } from 'react-native';
 import { scale, verticalScale } from 'react-native-size-matters';
 import { commonStyles,textStyles } from '../../styles';
 import { colors, fonts } from '../../constants/theme';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import { width, wp } from '../../constants/sacling';
+import { hp, width, wp } from '../../constants/sacling';
 import {sales_slider, recruiter_slider} from './sales_slider'
-import  BarChart from './BarChart'
-import PieChart from './PieChart'
-import HalfPieChart from './HalfPieChart'
+const BarChart  = React.lazy(() => import('./BarChart')) 
+const PieChart = React.lazy(() => import('./PieChart'))
+const HalfPieChart = React.lazy(() => import('./HalfPieChart'))
+
 
     const ItemView = memo(({item}) => {
         return(
@@ -63,6 +64,14 @@ import HalfPieChart from './HalfPieChart'
         )
     })
 
+    const LoadingView = () => {
+        return(
+            <View style={{flex:1,height:hp(20), justifyContent:"center", alignItems:"center",}} >
+                <ActivityIndicator  size={"large"} color={colors.dark_primary_color} />
+            </View>
+        )
+    }
+
     const DashboardAnaylyticsScreen = ({navigation}) => {
         const data = [
             { quarter:"Companies", earnings: .3 },
@@ -78,9 +87,17 @@ import HalfPieChart from './HalfPieChart'
         const RenderPieChart = useMemo(() => {
             return(
                 <>
+                <Suspense fallback={<LoadingView />} >
                     <BarChart data={data} />
-                    <PieChart data={data} colors={colors}/>
-                    <HalfPieChart data={data} colors={colors}/>
+                    
+                </Suspense>
+                <Suspense fallback={<LoadingView />} >
+                    <PieChart data={data} colors={colors} />
+                </Suspense>
+                <Suspense fallback={<LoadingView />} >
+                    <HalfPieChart data={data}  colors={colors}/>
+                </Suspense>
+                 
                 </>
             )
         },[data, colors])

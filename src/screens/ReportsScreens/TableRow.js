@@ -5,21 +5,13 @@ import { width } from '../../constants/sacling';
 import { scale } from 'react-native-size-matters';
 import { colors } from '../../constants/theme';
 import AntDesign from 'react-native-vector-icons/AntDesign'
-const TableRow = () => {
-  const item = {
-    name:"Aftab Ameen",
-    companies:10,
-    contacts:10,
-    opportunities:7,
-    job_order:"10",
-    candidate:3,
-    vendors:12,
-  }
+const TableRow = ({item}) => {
+
     return(
-      <View style={{borderWidth:1,borderColor:"rgba(0,0,0,.2)", borderRadius:scale(5), }}>
+      <View style={{borderWidth:1, marginTop:scale(10), borderColor:"rgba(0,0,0,.2)", borderRadius:scale(5), }}>
           <View style={styles.row}>
             <Text style={textStyles.tableLabel}>
-            {item.name}
+            {item?.UsersIDs}
             </Text>
             <TouchableOpacity style={{
                 flexDirection:"row",
@@ -38,7 +30,7 @@ const TableRow = () => {
               Companies
             </Text>
             <Text style={textStyles.Label}>
-              {item.companies}
+              {item?.Companies}
             </Text>
           </View>
           <View style={styles.row}>
@@ -46,7 +38,7 @@ const TableRow = () => {
             Contacts
             </Text>
             <Text style={textStyles.Label}>
-              {item.contacts}
+              {item?.Contacts}
             </Text>
           </View>
           <View style={styles.row2}>
@@ -54,7 +46,7 @@ const TableRow = () => {
             Opportunities
             </Text>
             <Text style={textStyles.Label}>
-              {item.opportunities}
+              {item?.Opportunities}
             </Text>
           </View>
           <View style={styles.row}>
@@ -62,7 +54,7 @@ const TableRow = () => {
               Job Orders
             </Text>
             <Text style={textStyles.Label}>
-              {item.job_order}
+              {item?.JobOrders}
             </Text>
           </View>
           <View style={styles.row2}>
@@ -70,7 +62,7 @@ const TableRow = () => {
             Candidates
             </Text>
             <Text style={textStyles.Label}>
-              {item.candidate}
+              {item?.Candidates}
             </Text>
           </View>
           <View style={{...styles.row, borderBottomWidth:0}}>
@@ -78,7 +70,7 @@ const TableRow = () => {
             Vendors
             </Text>
             <Text style={textStyles.Label}>
-              {item.vendors}
+              {item?.Vendors}
             </Text>
           </View>
       </View>    

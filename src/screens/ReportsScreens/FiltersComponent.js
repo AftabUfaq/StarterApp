@@ -2,16 +2,15 @@ import React from 'react'
 import {View,Text,StyleSheet,TextInput, TouchableOpacity} from 'react-native'
 import { scale } from 'react-native-size-matters'
 import { AppScreenWidth } from '../../constants/sacling'
-import AntDesign from 'react-native-vector-icons/AntDesign'
 import Ionicons  from 'react-native-vector-icons/Ionicons'
 import { colors, fonts } from '../../constants/theme'
 import { textStyles } from '../../styles'
 const WIDTH = AppScreenWidth+scale(20)
-const FiltersComponent = () => {
+const FiltersComponent = ({result_per_page,total_records,page_number,page_start, setResultPerPage}) => {
   return (
-    <View style={{alignSelf:"center",justifyContent:"center", alignItems:"center", paddingVertical:scale(5), width:WIDTH, backgroundColor:"rgba(0,0,0,.1)"}}>
-        <View style={{width:WIDTH-scale(12), flexDirection:"row",justifyContent:"space-between" }} >
-            <TouchableOpacity style={styles.button}>
+    <View style={styles.mainView}>
+        <View style={styles.FilterMainView} >
+            <TouchableOpacity style={styles.FilterButton}>
                 <Ionicons 
                     name='options-sharp' 
                     style={{marginRight:scale(5)}} 
@@ -20,7 +19,7 @@ const FiltersComponent = () => {
                 />
                <Text style={{...textStyles.smallheading, fontSize:scale(13)}}>Filter</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.FilterButton}>
                 <Ionicons 
                     name='filter' 
                     style={{marginRight:scale(5)}} 
@@ -30,7 +29,8 @@ const FiltersComponent = () => {
                 <Text style={{...textStyles.smallheading, fontSize:scale(13)}}>Sort</Text>
             </TouchableOpacity>
         </View>
-        <View style={{width:WIDTH, marginTop:scale(5), flexDirection:"row",justifyContent:"space-around" }} >
+
+        <View style={styles.FilterMainView} >
             <TouchableOpacity style={styles.tab}>
                 <Ionicons 
                     name='options-sharp' 
@@ -39,7 +39,7 @@ const FiltersComponent = () => {
                     color={colors.text_primary_color} 
                 />
                <Text style={styles.tab_text}>All</Text>
-               <Text style={styles.count_text}>60</Text>
+               <Text style={styles.count_text}>{total_records}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.tab}>
                 <Ionicons 
@@ -62,33 +62,22 @@ const FiltersComponent = () => {
                 <Text style={styles.count_text}>25</Text>
             </TouchableOpacity>
         </View>
-        <View style={{width:WIDTH, marginTop:scale(5), flexDirection:"row",justifyContent:"space-around" }} >
-            
+
+        <View style={styles.FilterMainView} >
             <View style={styles.info_View}>
-                <Text  style={{...textStyles.smallheading, fontSize:scale(11)}}>11 - 14 of 64 results</Text>
+                <Text  style={{...textStyles.smallheading, fontSize:scale(11)}}>{parseInt(page_start)+1} - {parseInt(page_start)+ parseInt(result_per_page)} of {total_records} results</Text>
             </View>
+
             <View style={styles.info_View}>
                 <Text style={{...textStyles.smallheading, fontSize:scale(11)}}>Results per page:</Text>
                 <TextInput 
                     keyboardType={"numeric"}
                     caretHidden={true}
+                    value={result_per_page}
+                    onChangeText={(text) => setResultPerPage(text)}
                     placeholder={"0"}
-                    inlineImageLeft='search_icon'
-                    style={{
-                        width:scale(70),
-                        marginLeft:scale(5),
-                        padding:0, 
-                        borderColor:"rgba(0,0,0,.3)",
-                        borderRadius:scale(5),
-                        fontFamily:fonts.Medium,
-                        fontSize:scale(12),
-
-                        includeFontPadding:false,
-                        color:"rgba(0,0,0,.6)",
-                        borderWidth:1,
-                        height:scale(30),
-                        paddingLeft:scale(5)
-                    }} 
+                 
+                    style={styles.TextInput} 
                 />
             </View>
         </View>
@@ -99,7 +88,21 @@ const FiltersComponent = () => {
 export default FiltersComponent
 
 const styles = StyleSheet.create({
-    button:{
+    mainView:{
+        alignSelf:"center",
+        justifyContent:"center", 
+        alignItems:"center", 
+        paddingVertical:scale(5), 
+        width:WIDTH, 
+        backgroundColor:"rgba(0,0,0,.1)"
+    },
+    FilterMainView:{
+        width:WIDTH-scale(12), 
+        flexDirection:"row",
+        marginTop:scale(5),
+        justifyContent:"space-between"
+    },
+    FilterButton:{
         width:WIDTH/2.15, 
         flexDirection:"row",
         justifyContent:"center", 
@@ -118,11 +121,24 @@ const styles = StyleSheet.create({
         shadowRadius: 13.97,
         elevation: 21,
     },
+    TextInput:{
+        width:scale(70),
+        marginLeft:scale(5),
+        padding:0, 
+        borderColor:"rgba(0,0,0,.3)",
+        borderRadius:scale(5),
+        fontFamily:fonts.Medium,
+        fontSize:scale(12),
+        includeFontPadding:false,
+        color:"rgba(0,0,0,.6)",
+        borderWidth:1,
+        height:scale(30),
+        paddingLeft:scale(5)
+    },
     info_View:{
         flexDirection:"row",
-       // justifyContent:"center", 
         alignItems:"center",
-        padding:scale(8),
+       
         borderWidth:0,
         backgroundColor:"#0000",
         borderRadius:scale(5),
@@ -133,18 +149,10 @@ const styles = StyleSheet.create({
         justifyContent:"center", 
         alignItems:"center",
         padding:scale(8),
-        //paddingBottom:scale(4),
         borderBottomWidth:2,
         borderRadius:scale(5),
         borderColor:colors.dark_primary_color,
-        // shadowColor: "#000",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 10,
-        // },
-        // shadowOpacity: 0.53,
-        // shadowRadius: 13.97,
-        // elevation: 21,
+       
         
     },
     tab_text:{

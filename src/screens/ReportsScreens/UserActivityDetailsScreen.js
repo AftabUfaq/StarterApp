@@ -17,21 +17,13 @@ const UserActivityDetailsScreen = ({navigation}) => {
             isdrawer={false}
             onPress={() =>  navigation.goBack()}
             title={"User Activity Details"}
+            isfilter={false}
+            iswidgets={false}
         />
          <FiltersComponent />
             <View style={{height:10}} />
               <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{alignItems:"center",justifyContent:"center", }} >
-                <TableRow  />
-                <View style={{height:10}} />
-                <TableRow />
-                <View style={{height:10}} />
-                <TableRow />
-                <View style={{height:10}} />
-
-                <TableRow />
-                <View style={{height:10}} />
-                <TableRow />
-                <View style={{height:10}} />
+               
                
               </ScrollView>
         </SafeAreaView>
