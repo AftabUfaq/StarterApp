@@ -65,18 +65,17 @@ const FiltersComponent = ({result_per_page,total_records,page_number,page_start,
 
         <View style={styles.FilterMainView} >
             <View style={styles.info_View}>
-                <Text  style={{...textStyles.smallheading, fontSize:scale(11)}}>{parseInt(page_start)+1} - {parseInt(page_start)+ parseInt(result_per_page)} of {total_records} results</Text>
+                <Text  style={{...textStyles.smallheading,color:colors.white, fontFamily:fonts.Bold, fontSize:scale(11)}}>{parseInt(page_start)+1} - {parseInt(page_start)+ parseInt(result_per_page)} of {total_records} results</Text>
             </View>
 
             <View style={styles.info_View}>
-                <Text style={{...textStyles.smallheading, fontSize:scale(11)}}>Results per page:</Text>
+                <Text style={{...textStyles.smallheading,color:colors.white, fontFamily:fonts.Bold,  fontSize:scale(11)}}>Results per page:</Text>
                 <TextInput 
                     keyboardType={"numeric"}
                     caretHidden={true}
                     value={result_per_page}
                     onChangeText={(text) => setResultPerPage(text)}
                     placeholder={"0"}
-                 
                     style={styles.TextInput} 
                 />
             </View>
@@ -92,9 +91,9 @@ const styles = StyleSheet.create({
         alignSelf:"center",
         justifyContent:"center", 
         alignItems:"center", 
-        paddingVertical:scale(5), 
+        paddingBottom:scale(5), 
         width:WIDTH, 
-        backgroundColor:"rgba(0,0,0,.1)"
+        backgroundColor:colors.dark_primary_color //"rgba(0,0,0,.1)"
     },
     FilterMainView:{
         width:WIDTH-scale(12), 
@@ -125,12 +124,12 @@ const styles = StyleSheet.create({
         width:scale(70),
         marginLeft:scale(5),
         padding:0, 
-        borderColor:"rgba(0,0,0,.3)",
+        borderColor:"rgba(255,255,255,.3)",
         borderRadius:scale(5),
         fontFamily:fonts.Medium,
         fontSize:scale(12),
         includeFontPadding:false,
-        color:"rgba(0,0,0,.6)",
+        color:"#fff",
         borderWidth:1,
         height:scale(30),
         paddingLeft:scale(5)
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
         fontFamily:fonts.Bold,
         padding:scale(3),  
         fontSize:scale(10),
-        width:scale(25),
+        minWidth:scale(25),
         textAlign:"center",
         includeFontPadding:false
     }
