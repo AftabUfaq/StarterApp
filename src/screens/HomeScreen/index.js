@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -12,15 +12,12 @@ import { MainRoutes } from '../../constants/routes';
 import { colors, fonts } from '../../constants/theme';
 import { AppScreenWidth, hp, width } from '../../constants/sacling';
 import { useSelector } from 'react-redux';
-
 import Job from '../../assets/images/job.svg'
 import OnBoarding from '../../assets/images/onboarding.svg'
-
+import * as Animatable from "react-native-animatable";
     const HomeScreen = ({navigation}) => {
-       
-      
         const {user} = useSelector(state => state.LoginReducer)
-        
+        const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
         return (
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
@@ -32,14 +29,21 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                         title={"DashBoard"}
                     />
                     <View style={{width:AppScreenWidth,marginVertical:scale(5) ,alignItems:"flex-start", alignSelf:"center"}} >
-                        <Text style={styles.headingtext} >Welcome !</Text>
+                        <Animatable.Text 
+                            animation="bounceOut"
+                            iterationCount={1}
+                            direction="alternate-reverse" 
+                            style={styles.headingtext} >Welcome !</Animatable.Text>
                         <Text style={styles.nameText} >{user.preferred_name}</Text>
                         <Text style={styles.paragraph} >Streamline your company’s business efficiently managing candidates, jobs and placements</Text>
                     </View>
                     <View style={styles.main} />
 
                     <View style={styles.row} >
-                        <TouchableOpacity 
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.CompanyScreen)} 
                             style={styles.box} >
                             <FontAwesome 
@@ -48,8 +52,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Company</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.ContactScreen, {item:"I am a navigation prop"}) } 
                             style={styles.box} >
                             <FontAwesome5 
@@ -58,8 +65,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Contact</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.JobOrderScreen) } 
                             style={styles.box} >
                             <Job 
@@ -67,11 +77,14 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 height={scale(30)}
                             />
                             <Text style={{...styles.textStyle}}>Job Orders</Text>
-                        </TouchableOpacity>
+                        </AnimatableTouchableOpacity>
                     </View>
 
                     <View style={styles.row} >
-                        <TouchableOpacity 
+                    <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.CandidatesScreen)} 
                             style={styles.box} >
                             <FontAwesome5 
@@ -80,8 +93,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Candidates</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.OnBoardingScreen) } 
                             style={styles.box} >
                             <OnBoarding 
@@ -89,8 +105,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 height={scale(30)}
                             />
                             <Text style={{...styles.textStyle}}>onBoarding</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.PlacementsScreen) } 
                             style={styles.box} >
                             <Foundation 
@@ -99,11 +118,14 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(40)} 
                             />
                             <Text style={{...styles.textStyle}}>Placements</Text>
-                        </TouchableOpacity>
+                        </AnimatableTouchableOpacity>
                     </View>
 
                     <View style={styles.row} >
-                        <TouchableOpacity 
+                    <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.TimeSheetScreen)} 
                             style={styles.box} >
                             <AntDesign 
@@ -112,8 +134,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>TimeSheets</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.ExpensesScreen) } 
                             style={styles.box} >
                             <Entypo 
@@ -122,8 +147,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Expenses</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.InvoicesScreen) } 
                             style={styles.box} >
                             <FontAwesome5 
@@ -132,10 +160,13 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Invoices</Text>
-                        </TouchableOpacity>
+                        </AnimatableTouchableOpacity>
                     </View>
                     <View style={styles.row} >
-                        <TouchableOpacity 
+                    <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse"  
                             onPress={() => navigation.navigate(MainRoutes.DashBoardScreen)} 
                             style={styles.box} >
                             <FontAwesome 
@@ -144,8 +175,11 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Dashboard</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
+                        </AnimatableTouchableOpacity>
+                        <AnimatableTouchableOpacity
+                         animation="bounceOut"
+                         iterationCount={1}
+                         direction="alternate-reverse" 
                             onPress={() => navigation.navigate(MainRoutes.SettingsScreen) } 
                             style={styles.box} >
                             <FontAwesome 
@@ -154,7 +188,7 @@ import OnBoarding from '../../assets/images/onboarding.svg'
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Settings</Text>
-                        </TouchableOpacity>
+                        </AnimatableTouchableOpacity>
                       
                     </View>
                   
