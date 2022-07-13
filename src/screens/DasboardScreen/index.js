@@ -4,6 +4,7 @@ import {
     SafeAreaView,
     StatusBar,
     StyleSheet, 
+    ActivityIndicator,
     Text,TouchableOpacity,
     useWindowDimensions,View 
 } from 'react-native';
@@ -20,12 +21,14 @@ import Modal from 'react-native-modal';
 import { textStyles } from '../../styles';
 import { wp } from '../../constants/sacling';
 import { scale } from 'react-native-size-matters';
+import useIsReady from '../../hooks/useIsReady';
     const renderScene = SceneMap({
         DashboardAnaylyticsScreen: DashboardAnaylyticsScreen,
         ReportsScreen: ReportsScreen,
         BulkMailScreen:BulkMailScreen
     });
     const DashBoardScreen = ({navigation}) => {
+        const isReady = useIsReady()
         const layout = useWindowDimensions();
         const [index, setIndex] = React.useState(0);
         const [show_filter_modal, setShowFilterModal] = useState(false)
@@ -64,7 +67,13 @@ import { scale } from 'react-native-size-matters';
               style={{ backgroundColor:colors.dark_primary_color }}
             />
         );
-       
+       if(!isReady){
+            return(
+                <View style={{flex:1,justifyContent:"center", alignItems:"center",}} >
+                    <ActivityIndicator  size={"large"} color={colors.dark_primary_color} />
+                </View>
+        )
+       }
         return (
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
@@ -81,6 +90,8 @@ import { scale } from 'react-native-size-matters';
                     renderScene={renderScene}
                     renderTabBar={renderTabBar}
                     scrollEnabled={true}
+                    lazy={true}
+                    optimizationsEnabled={true}
                     onIndexChange={setIndex}
                     initialLayout={{ width: layout.width }}
                 />
