@@ -15,20 +15,25 @@ import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import DashboardAnaylyticsScreen from './DashboardAnaylyticsScreen';
 import ReportsScreen from './ReportsScreen';
 import BulkMailScreen from './BulkMailScreen';
-import AntDesign from 'react-native-vector-icons/AntDesign'
+import Entypo from 'react-native-vector-icons/Entypo'
 import widget_data from './widgetData.json'
 import Modal from 'react-native-modal';
 import { textStyles } from '../../styles';
 import { wp } from '../../constants/sacling';
 import { scale } from 'react-native-size-matters';
 import useIsReady from '../../hooks/useIsReady';
+import moment from 'moment';
+import CustomCalendar from './RangeCalendar';
+
     const renderScene = SceneMap({
         DashboardAnaylyticsScreen: DashboardAnaylyticsScreen,
         ReportsScreen: ReportsScreen,
         BulkMailScreen:BulkMailScreen
     });
     const DashBoardScreen = ({navigation}) => {
+      
         const isReady = useIsReady()
+        const [initialDate, setInitialDate] = useState(moment().format('YYYY-MM-DD'))
         const layout = useWindowDimensions();
         const [index, setIndex] = React.useState(0);
         const [show_filter_modal, setShowFilterModal] = useState(false)
@@ -49,7 +54,7 @@ import useIsReady from '../../hooks/useIsReady';
             },
         ]);
         const [filters, setFilter] = useState([
-            "Yesterday", "Last 7 Days", "Last 14 Days", "Last Week", "Last 2 Week", "This Month", "Last 3 Months", "Last 6 Months", "Last 9 Months", "Last 12 Months", "Custom Range",
+            "Yesterday", "Last 7 Days", "Last 14 Days", "Last Week", "Last 2 Week", "This Month", "Last 3 Months", "Last 6 Months", "Last 9 Months", "Last 12 Months",
         ])
        
         const renderTabBar = props => (
@@ -85,6 +90,10 @@ import useIsReady from '../../hooks/useIsReady';
                     FilterPress={() => setShowFilterModal(!show_filter_modal)}
                     NotificationPress={() => setShowWidgetModal(!show_widget_modal)}
                 />
+                <View style={{backgroundColor:"#fff", paddingVertical:20, borderWidth:2, }}>
+                    <CustomCalendar initialDate={initialDate} setInitialDate={setInitialDate} />
+                   
+                </View>
                 <TabView
                     navigationState={{ index, routes }}
                     renderScene={renderScene}
@@ -111,12 +120,13 @@ import useIsReady from '../../hooks/useIsReady';
                 >
                     <View style={styles.mainView}>
                         <View style={styles.HeaderView}>
-                            <Text style={styles.headerText}>
-                            Add Widget
-                            </Text> 
-                            <TouchableOpacity onPress={() => setShowWidgetModal(false)} >
-                                <AntDesign name='closesquare'  size={scale(22)} color={"#000"} />
+                             <TouchableOpacity onPress={() => setShowWidgetModal(false)} >
+                                <Entypo color={"#fff"} name="chevron-thin-left" size={scale(24)}  />
                             </TouchableOpacity>
+                            <Text style={styles.headerText}>
+                                Add Widget
+                            </Text> 
+                           
                         </View>
                         <FlatList 
                             data={widgetData}
@@ -135,7 +145,7 @@ import useIsReady from '../../hooks/useIsReady';
                                             <Switch 
                                                 onToggle={() => {
                                                     let temp = [...widgetData]
-                                                    console.log(temp[index].selected);
+                                           
                                                     temp[index].selected = !temp[index].selected
                                                     setWidgetData(temp)
                                                 }}
@@ -160,29 +170,59 @@ import useIsReady from '../../hooks/useIsReady';
                         margin:0
                     }}
                     isVisible={show_filter_modal}
+                    //isVisible={true}
                 >
                     <View style={styles.mainView}>
                         <View style={styles.HeaderView}>
-                            <Text style={styles.headerText}>
-                            Custom Filter
-                            </Text> 
                             <TouchableOpacity onPress={() => setShowFilterModal(false)} >
-                                <AntDesign name='closesquare'  size={scale(22)} color={"#000"} />
+                                <Entypo color={"#fff"} name="chevron-thin-left" size={scale(24)}  />
                             </TouchableOpacity>
+                            <Text style={styles.headerText}>
+                                Custom Filter
+                            </Text> 
                         </View>
                         <FlatList 
                             data={filters}
+                            numColumns={2}
+                            columnWrapperStyle={{
+                                justifyContent:"space-evenly",
+                             
+                               
+                            }}
                             renderItem={({item,index}) => {
                                 return(
-                                    <TouchableOpacity style={{...styles.ItemMainView,backgroundColor:"#e3e3e6", flexDirection:"column", padding:scale(5)}}>
-                                        <Text style={{...textStyles.Label,color:colors.dark_primary_color, textAlign:"center"}}>
+                                    <TouchableOpacity 
+                                        style={styles.FilteritemVew}>
+                                        <Text 
+                                            style={{
+                                                ...textStyles.Label,
+                                                color:colors.dark_primary_color,
+                                                textAlign:"center"
+                                            }}>
                                             {item}
                                         </Text> 
                                     </TouchableOpacity>
                                 )
                             }}
+                            ListFooterComponent={() => {
+                                return(
+                                    <TouchableOpacity 
+                                        style={{...styles.FilteritemVew, width:wp(94)}}>
+                                        <Text 
+                                            style={{
+                                                ...textStyles.Label,
+                                                color:colors.dark_primary_color,
+                                                textAlign:"center"
+                                            }}>
+                                            Custom range
+                                        </Text> 
+                                    </TouchableOpacity>
+                                )
+                            }}
                         />
+                          <CustomCalendar initialDate={initialDate} setInitialDate={setInitialDate} />
                     </View>
+                  
                 </Modal>
             </SafeAreaView>
             
@@ -203,16 +243,16 @@ const styles = StyleSheet.create({
         padding:scale(5),
         alignSelf:"center", 
         alignItems:"center",
-        justifyContent:"space-between",
-        borderBottomWidth:2,   
-        borderColor:"rgba(0,0,0,.8)",
+       
+      
+        backgroundColor:colors.dark_primary_color,
         flexDirection:"row"
     },
     headerText:{
-        ...textStyles.heading, 
-        fontSize:scale(14),
-        color:colors.dark_primary_color,
-        textAlign:"left"
+        fontFamily:fonts.Medium,
+        fontSize: scale(15),
+        color:colors.white,
+        marginLeft:scale(90)
     },
     ItemMainView:{ 
         width:wp(98),
@@ -224,6 +264,20 @@ const styles = StyleSheet.create({
         borderWidth:1,   
         borderColor:"rgba(0,0,0,.1)",
         flexDirection:"row"
+    },
+    FilteritemVew:{ 
+        width:wp(45),
+        borderRadius:scale(5),
+        alignSelf:"center", 
+        marginTop:scale(5), 
+        alignItems:"center",
+        justifyContent:"space-between",
+        borderWidth:1,   
+        borderColor:"rgba(0,0,0,.1)",
+        flexDirection:"row",
+        backgroundColor:"rgba(0,0,0,.01)", 
+        flexDirection:"column", 
+        padding:scale(10)
     },
     textView:{ 
         width:wp(85),

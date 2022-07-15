@@ -15,9 +15,11 @@ import { useSelector } from 'react-redux';
 import Job from '../../assets/images/job.svg'
 import OnBoarding from '../../assets/images/onboarding.svg'
 import * as Animatable from "react-native-animatable";
+
+
     const HomeScreen = ({navigation}) => {
         const {user} = useSelector(state => state.LoginReducer)
-        const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
+        
         return (
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
@@ -40,10 +42,8 @@ import * as Animatable from "react-native-animatable";
                     <View style={styles.main} />
 
                     <View style={styles.row} >
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        <TouchableOpacity
+                          
                             onPress={() => navigation.navigate(MainRoutes.CompanyScreen)} 
                             style={styles.box} >
                             <FontAwesome 
@@ -52,11 +52,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Company</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.ContactScreen, {item:"I am a navigation prop"}) } 
                             style={styles.box} >
                             <FontAwesome5 
@@ -65,11 +63,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Contact</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.JobOrderScreen) } 
                             style={styles.box} >
                             <Job 
@@ -77,14 +73,12 @@ import * as Animatable from "react-native-animatable";
                                 height={scale(30)}
                             />
                             <Text style={{...styles.textStyle}}>Job Orders</Text>
-                        </AnimatableTouchableOpacity>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.row} >
-                    <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                    <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.CandidatesScreen)} 
                             style={styles.box} >
                             <FontAwesome5 
@@ -93,11 +87,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Candidates</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.OnBoardingScreen) } 
                             style={styles.box} >
                             <OnBoarding 
@@ -105,11 +97,9 @@ import * as Animatable from "react-native-animatable";
                                 height={scale(30)}
                             />
                             <Text style={{...styles.textStyle}}>onBoarding</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.PlacementsScreen) } 
                             style={styles.box} >
                             <Foundation 
@@ -118,14 +108,12 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(40)} 
                             />
                             <Text style={{...styles.textStyle}}>Placements</Text>
-                        </AnimatableTouchableOpacity>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.row} >
-                    <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                    <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.TimeSheetScreen)} 
                             style={styles.box} >
                             <AntDesign 
@@ -134,11 +122,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>TimeSheets</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.ExpensesScreen) } 
                             style={styles.box} >
                             <Entypo 
@@ -147,11 +133,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Expenses</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.InvoicesScreen) } 
                             style={styles.box} >
                             <FontAwesome5 
@@ -160,13 +144,11 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Invoices</Text>
-                        </AnimatableTouchableOpacity>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.row} >
-                    <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse"  
+                    <TouchableOpacity
+                          
                             onPress={() => navigation.navigate(MainRoutes.DashBoardScreen)} 
                             style={styles.box} >
                             <FontAwesome 
@@ -175,11 +157,9 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={styles.textStyle}>Dashboard</Text>
-                        </AnimatableTouchableOpacity>
-                        <AnimatableTouchableOpacity
-                         animation="bounceOut"
-                         iterationCount={1}
-                         direction="alternate-reverse" 
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                         
                             onPress={() => navigation.navigate(MainRoutes.SettingsScreen) } 
                             style={styles.box} >
                             <FontAwesome 
@@ -188,7 +168,7 @@ import * as Animatable from "react-native-animatable";
                                 size={scale(30)} 
                             />
                             <Text style={{...styles.textStyle}}>Settings</Text>
-                        </AnimatableTouchableOpacity>
+                        </TouchableOpacity>
                       
                     </View>
                   

@@ -5,13 +5,13 @@ import { colors, fonts } from "../constants/theme";
 export const textStyles = StyleSheet.create({
     heading:{
         fontFamily:fonts.Bold,
-        fontSize:scale(18),
+        fontSize:scale(18),includeFontPadding:false,
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
     mediumheading:{
         fontFamily:fonts.Medium,
-        fontSize:scale(16),
+        fontSize:scale(16),includeFontPadding:false,
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
@@ -23,26 +23,26 @@ export const textStyles = StyleSheet.create({
         backgroundColor:"#0000",
     },
     title:{
-        fontFamily:fonts.Medium,
+        fontFamily:fonts.Medium,includeFontPadding:false,
         fontSize:scale(12),
         color:"rgba(0,0,0,.8)",
         backgroundColor:"#0000",
     },
     paragraph:{
-        fontFamily:fonts.Regular,
+        fontFamily:fonts.Regular,includeFontPadding:false,
         fontSize:scale(14),
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
     Label:{
-        fontFamily:fonts.Medium,
+        fontFamily:fonts.Medium,includeFontPadding:false,
         fontSize:scale(12),
         includeFontPadding:false,
         color:colors.text_primary_color,
         backgroundColor:"#0000",
     },
     small:{
-        fontFamily:fonts.Light,
+        fontFamily:fonts.Light,includeFontPadding:false,
         fontSize:scale(12),
         color:colors.text_primary_color,
         backgroundColor:"#0000",
@@ -57,18 +57,18 @@ export const textStyles = StyleSheet.create({
     errorText:{
         fontFamily:fonts.Medium,
         fontSize:scale(10),
-        color:colors.error_text,
+        color:colors.error_text,includeFontPadding:false,
         backgroundColor:"#0000",
     },
     disabletext:{
         fontFamily:fonts.Regular,
         fontSize:scale(14),
         textAlign:"center",
-        color:"rgba(0,0,0,.5)",
+        color:"rgba(0,0,0,.5)",includeFontPadding:false,
         backgroundColor:"#0000",
     },
     tableLabel:{
-        fontFamily:fonts.Medium,
+        fontFamily:fonts.Medium,includeFontPadding:false,
         fontSize:scale(10),
         color:colors.text_primary_color,
         backgroundColor:"#0000",
