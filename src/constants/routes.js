@@ -58,4 +58,19 @@ export const MainRoutes = {
     UserActivityDetailsScreen:"UserActivityDetailsScreen",
     UserActivitySummaryScreen:"UserActivitySummaryScreen",
     UserAnalyticalReportScreen:"UserAnalyticalReportScreen",
+    // Setting Screee
+    IntegrationsSettings:"IntegrationsSettings",
+    JobBoardsSettings:"JobBoardsSettings",
+    BulkEmailSettings:"BulkEmailSettings",
+    CancelSubscriptionSettings:"CancelSubscriptionSettings",
+    HistorySettings:"HistorySettings",
+    PayForUserSubscriptioSettings:"PayForUserSubscriptioSettings",
+    PayForConsultantsSettings:"PayForConsultantsSettings",
+    PowerSearchCalibrationSettings:"PowerSearchCalibrationSettings",
+    LeavesRequestSettings:"LeavesRequestSettings",
+    WorkFlowSettings:"WorkFlowSettings",
+    LocalizationSettings:"LocalizationSettings",
+    FieldscustomizationSettings:"FieldscustomizationSettings",
+    StatusCustomizationSettings:"StatusCustomizationSettings",
+        
 }

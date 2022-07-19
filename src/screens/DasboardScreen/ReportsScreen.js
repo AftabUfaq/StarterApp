@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity,useWindowDimensions, ScrollView } from 'react-native';
-import { scale, verticalScale } from 'react-native-size-matters';
+import React from 'react';
+import {SafeAreaView,StatusBar, Text,View,StyleSheet,TouchableOpacity, ScrollView } from 'react-native';
+import { scale } from 'react-native-size-matters';
 import { commonStyles,textStyles } from '../../styles';
 import { useNavigation } from '@react-navigation/native';
 import { colors, fonts } from '../../constants/theme';
-import { AppScreenWidth, hp, width, wp } from '../../constants/sacling';
+import {width, wp } from '../../constants/sacling';
 import reports_data from './reports'
  const ReportsScreen = () => {
     const navigation = useNavigation();

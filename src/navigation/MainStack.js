@@ -66,6 +66,26 @@ import UserActivityDetailsScreen from '../screens/ReportsScreens/UserActivityDet
 import UserActivitySummaryScreen from '../screens/ReportsScreens/UserActivitySummaryScreen';
 import UserAnalyticalReportScreen from '../screens/ReportsScreens/UserAnalyticalReportScreen';
 
+
+//Settings Screens 
+
+import LableCustomizationSettings from '../screens/SettingsScreen/LableCustomizationSettings';
+import StatusCustomizationSettings from '../screens/SettingsScreen/StatusCustomizationSettings';
+import FieldscustomizationSettings from '../screens/SettingsScreen/FieldscustomizationSettings';
+import LocalizationSettings from '../screens/SettingsScreen/LocalizationSettings';
+import WorkFlowSettings from '../screens/SettingsScreen/WorkFlowSettings';
+import LeavesRequestSettings from '../screens/SettingsScreen/LeavesRequestSettings';
+import PowerSearchCalibrationSettings from '../screens/SettingsScreen/PowerSearchCalibrationSettings';
+import CancelSubscriptionSettings from '../screens/SettingsScreen/CancelSubscriptionSettings';
+import HistorySettings from '../screens/SettingsScreen/HistorySettings';
+import PayForUserSubscriptioSettings from '../screens/SettingsScreen/PayForUserSubscriptioSettings';
+import PayForConsultantsSettings from '../screens/SettingsScreen/PayForConsultantsSettings';
+import IntegrationsSettings from '../screens/SettingsScreen/IntegrationsSettings';
+import JobBoardsSettings from '../screens/SettingsScreen/JobBoardsSettings';
+import BulkEmailSettings from '../screens/SettingsScreen/BulkEmailSettings';
+
+
+
 import DrawerContent from './DrawerContent';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -439,6 +459,107 @@ const MainStack = () => {
                 }}
             />
             
+            
+            {/* Start Settings */}
+            <Stack.Screen 
+                name="LableCustomizationSettings" 
+                component={LableCustomizationSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="StatusCustomizationSettings" 
+                component={StatusCustomizationSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="FieldscustomizationSettings" 
+                component={FieldscustomizationSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="LocalizationSettings" 
+                component={LocalizationSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="WorkFlowSettings" 
+                component={WorkFlowSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="LeavesRequestSettings" 
+                component={LeavesRequestSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="PowerSearchCalibrationSettings" 
+                component={PowerSearchCalibrationSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="CancelSubscriptionSettings" 
+                component={CancelSubscriptionSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="HistorySettings" 
+                component={HistorySettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="PayForUserSubscriptioSettings" 
+                component={PayForUserSubscriptioSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="PayForConsultantsSettings" 
+                component={PayForConsultantsSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="IntegrationsSettings" 
+                component={IntegrationsSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="JobBoardsSettings" 
+                component={JobBoardsSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            <Stack.Screen 
+                name="BulkEmailSettings" 
+                component={BulkEmailSettings} 
+                options={{
+                    headerShown:false
+                }}
+            />
+            {/* End Settigs */}
         </Stack.Navigator>
     )
 }
