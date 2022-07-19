@@ -28,7 +28,7 @@ import { MainRoutes } from '../../constants/routes';
                 return(
                     <ContactProfileCard 
                         item={item}
-                      //  onPress={() => navigation.navigate(MainRoutes.AddContactScreen)}
+                        onPress={() => navigation.navigate(MainRoutes.ContactDetailScreen)}
                     />
                 )
             

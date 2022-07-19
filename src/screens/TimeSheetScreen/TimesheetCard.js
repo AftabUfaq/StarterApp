@@ -19,7 +19,7 @@ const TimesheetCard = ({item, onPress=null}) => {
                     >
                     <AntDesign name='delete' color={colors.white} size={scale(22)} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.ActionButton}>
+                <TouchableOpacity onPress={onPress} style={styles.ActionButton}>
                     <AntDesign name='edit' color={colors.white} size={scale(22)} />
                 </TouchableOpacity>
             </View>

@@ -10,38 +10,36 @@ export const AuthRoutes = {
 
 export const MainRoutes = {
     CandidatesScreen:"CandidatesScreen",
-    AddCandidatesScreen:"AddCandidatesScreen",
-    EditCandidatesScreen:"EditCandidatesScreen",
-    HomeScreen:"HomeScreen",
-    EditProfileScreen:"EditProfileScreen",
-    CompanyScreen:"CompanyScreen",
-    AddCompanyScreen:"AddCompanyScreen",
-    ContactScreen:"ContactScreen",
-    ContactDetailScreen:"ContactDetailScreen",
-    AddContactScreen:"AddContactScreen",
-    CandidatesDetailsScreen:"CandidatesDetailsScreen",
-    JobOrderScreen:"JobOrderScreen",
-    AddJobScreen:"AddJobScreen",
-    JobDetailsScreen:"JobDetailsScreen",
-    OnBoardingScreen:"OnBoardingScreen",
-    AddonBoardingScreen:"AddonBoardingScreen",
-    OnBoardingDetailsScreen:"OnBoardingDetailsScreen",
-    PlacementsScreen:"PlacementsScreen",
-    AddPlacementScreen:"AddPlacementScreen",
-    PlacementDetailsScreen:"PlacementDetailsScreen",
-    TimeSheetScreen:"TimeSheetScreen",
-    AddTimesheetScreen:"AddTimesheetScreen",
-    TimeSheetDetailsScreen:"TimeSheetDetailsScreen",
-    ExpensesScreen:"ExpensesScreen",
-    ExpensesAddScreen:"ExpensesAddScreen",
     EditCandidatesScreen:"EditCandidatesScreen",
     EditCompanyScreen:"EditCompanyScreen",
     EditContactScreen:"EditContactScreen",
     EditJobScreen:"EditJobScreen",
     EditonBoardingScreen:"EditonBoardingScreen",
     EditPlacementScreen:"EditPlacementScreen",
-    EditTimesheetScreen:"EditTimesheetScreen",
-    ExpensesEditScreen:"ExpensesEditScreen",
+   
+
+    EditCandidatesScreen:"EditCandidatesScreen",
+    HomeScreen:"HomeScreen",
+    EditProfileScreen:"EditProfileScreen",
+    CompanyScreen:"CompanyScreen",
+   
+    ContactScreen:"ContactScreen",
+    
+    CandidatesDetailsScreen:"CandidatesDetailsScreen",
+    JobOrderScreen:"JobOrderScreen",
+ 
+    JobDetailsScreen:"JobDetailsScreen",
+    OnBoardingScreen:"OnBoardingScreen",
+  
+    OnBoardingDetailsScreen:"OnBoardingDetailsScreen",
+    PlacementsScreen:"PlacementsScreen",
+  
+    PlacementDetailsScreen:"PlacementDetailsScreen",
+    TimeSheetScreen:"TimeSheetScreen",
+  
+    TimeSheetDetailsScreen:"TimeSheetDetailsScreen",
+    ExpensesScreen:"ExpensesScreen",
+  
     ExpensesDetailsScreen:"ExpensesDetailsScreen",
     InvoicesScreen:"InvoicesScreen",
     DashBoardScreen:"DashBoardScreen",

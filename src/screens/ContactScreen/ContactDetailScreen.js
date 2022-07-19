@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomHeader from '../../components/CustomHeader';
 import { colors, fonts } from '../../constants/theme';
 import { scale, verticalScale } from 'react-native-size-matters';
-import CandidateProfileCard from './CandidateProfileCard'
+import CandidateProfileCard from '../CandidatesScreen/CandidateProfileCard'
 import { AppScreenWidth, width } from '../../constants/sacling';
 import Menu, {
     renderers,
@@ -21,7 +21,7 @@ import Menu, {
     MenuTrigger,
   } from 'react-native-popup-menu';
   const {ContextMenu} = renderers;   
-    const CandidatesScreen = ({navigation}) => {
+    const ContactDetailScreen = ({navigation}) => {
         const user = {
                 "email": "Marlene_Paucek0@gmail.com", 
                 "image": "https://randomuser.me/api/portraits/men/95.jpg", 
@@ -93,7 +93,7 @@ import Menu, {
                         show_backButton={true}
                         isdrawer={false}
                         onPress={() => navigation.goBack()}
-                        title={"Candidates details"}
+                        title={"Contact details"}
                     />
                     <CandidateProfileCard 
                         item={user}
@@ -316,7 +316,7 @@ import Menu, {
     };
 
 
-export default CandidatesScreen;
+export default ContactDetailScreen;
 
 const styles = StyleSheet.create({
     menu_row_icons:{

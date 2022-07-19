@@ -8,17 +8,21 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { useNavigation } from '@react-navigation/native';
+import { MainRoutes } from "../../constants/routes";
 const JobCard = ({item, onPress=null}) => {
+    const navigation = useNavigation();
     const rightButtons = () => {
         return(
             <View 
                 style={styles.ActionButtonRows}>
                 <TouchableOpacity
+                    onPress={() => navigation.navigate(MainRoutes.EditJobScreen)}
                     style={{...styles.ActionButton,backgroundColor:colors.error_text}} 
                     >
                     <AntDesign name='delete' color={colors.white} size={scale(22)} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.ActionButton}>
+                <TouchableOpacity  onPress={onPress} style={styles.ActionButton}>
                     <AntDesign name='edit' color={colors.white} size={scale(22)} />
                 </TouchableOpacity>
             </View>

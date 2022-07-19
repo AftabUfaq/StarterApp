@@ -4,6 +4,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer'
 
 import CandidatesScreen from '../screens/CandidatesScreen';
 import AddCandidatesScreen from '../screens/CandidatesScreen/AddCandidateScreen';
+import EditCandidateScreen from '../screens/CandidatesScreen/EditCandidateScreen';
 import CandidatesDetailsScreen from '../screens/CandidatesScreen/CandidateDetailScreen';
 
 import HomeScreen from '../screens/HomeScreen/index';
@@ -11,24 +12,33 @@ import EditProfileScreen from '../screens/EditProfileScreen'
 
 import CompanyScreen from '../screens/CompanyScreen';
 import AddCompanyScreen from '../screens/CompanyScreen/AddCompanyScreen';
+import EditCompanyScreen from '../screens/CompanyScreen/EditcompanyScreen';
 
 import ContactScreen from '../screens/ContactScreen';
 import AddContactScreen from '../screens/ContactScreen/AddContactScreen';
+import EditContactScreen from '../screens/ContactScreen/EditContactScreen';
+import ContactDetailScreen from '../screens/ContactScreen/ContactDetailScreen';
+
 import JobOrderScreen from '../screens/JobOrderScreen';
 import AddJobScreen from '../screens/JobOrderScreen/AddJobScreen'
+import EditJobScreen from '../screens/JobOrderScreen/EditJobScreen'
+
 import JobDetailsScreen from '../screens/JobOrderScreen/JobDetailsScreen'
 
 import OnBoardingScreen from '../screens/OnBoardingScreen';
 import AddonBoardingScreen from '../screens/OnBoardingScreen/AddonBoardingScreen';
+import EditonBoardingScreen from '../screens/OnBoardingScreen/EditonBoardingScreen';
 import OnBoardingDetailsScreen from '../screens/OnBoardingScreen/OnBoardingDetailsScreen';
 
 
 import PlacementsScreen from '../screens/PlacementScreen';
 import AddPlacementScreen from '../screens/PlacementScreen/AddPlacementScreen';
+import EditPlacementScreen from '../screens/PlacementScreen/EditPlacementScreen';
 import PlacementDetailsScreen from '../screens/PlacementScreen/PlacementDetailsScreen';
 
 import TimeSheetScreen from '../screens/TimeSheetScreen';
 import AddTimesheetScreen from '../screens/TimeSheetScreen/AddTimesheetScreen';
+
 import TimeSheetDetailsScreen from '../screens/TimeSheetScreen/TimeSheetDetailsScreen';
 
 import ExpensesScreen from '../screens/ExpensesScreen';
@@ -98,6 +108,14 @@ const MainStack = () => {
                 }}
             />
 
+            <Stack.Screen 
+                name="EditCompanyScreen" 
+                component={EditCompanyScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
 
 
             <Stack.Screen 
@@ -111,6 +129,22 @@ const MainStack = () => {
             <Stack.Screen 
                 name="AddContactScreen" 
                 component={AddContactScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+            <Stack.Screen 
+                name="ContactDetailScreen" 
+                component={ContactDetailScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+            <Stack.Screen 
+                name="EditContactScreen" 
+                component={EditContactScreen} 
                 options={{
                     headerShown:false
                 }}
@@ -132,6 +166,15 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+
+            <Stack.Screen 
+                name="EditJobScreen" 
+                component={EditJobScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
             <Stack.Screen 
                 name="JobDetailsScreen" 
                 component={JobDetailsScreen} 
@@ -151,6 +194,14 @@ const MainStack = () => {
             <Stack.Screen 
                 name="AddCandidatesScreen" 
                 component={AddCandidatesScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+            <Stack.Screen 
+                name="EditCandidatesScreen" 
+                component={EditCandidateScreen} 
                 options={{
                     headerShown:false
                 }}
@@ -179,6 +230,15 @@ const MainStack = () => {
                     headerShown:false
                 }}
             />
+
+            <Stack.Screen 
+                name="EditonBoardingScreen" 
+                component={EditonBoardingScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
             <Stack.Screen 
                 name="OnBoardingDetailsScreen" 
                 component={OnBoardingDetailsScreen} 
@@ -197,6 +257,14 @@ const MainStack = () => {
             <Stack.Screen 
                 name="AddPlacementScreen" 
                 component={AddPlacementScreen} 
+                options={{
+                    headerShown:false
+                }}
+            />
+
+            <Stack.Screen 
+                name="EditPlacementScreen" 
+                component={EditPlacementScreen} 
                 options={{
                     headerShown:false
                 }}

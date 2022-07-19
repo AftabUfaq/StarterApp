@@ -36,7 +36,7 @@ import moment from 'moment';
             return(
                 <TimesheetCard 
                     item={item}
-                    onPress={() => navigation.navigate(MainRoutes.OnBoardingDetailsScreen)}
+                    onPress={() => navigation.navigate(MainRoutes.TimeSheetDetailsScreen)}
                    
                 />
             )

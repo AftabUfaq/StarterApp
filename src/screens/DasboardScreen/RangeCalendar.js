@@ -7,110 +7,122 @@ import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import { scale } from 'react-native-size-matters';
 import moment from 'moment';
 import CalendarPicker from 'react-native-calendar-picker';
-    const RangeCalendar = ({initialDate, setInitialDate}) => {
-        const DateChange = (date) => {
-           // setInitialDate(moment(date).format('YYYY-MM-DD'));
+import  CustomButton from '../../components/Button'
+    const RangeCalendar = ({initialDate, setInitialDate,setRangeStartDate,setRangeEndDate, setIsCustomRange}) => {
+        const DateChange = (date, type) => {
+            console.log(date, type);
+            if(type === "START_DATE"){
+                setRangeStartDate(moment(date).format('YYYY-MM-DD'))
+            }else if(type === "END_DATE"){
+                setRangeEndDate(moment(date).format('YYYY-MM-DD'))
+            }
+           
         }
         return (
-            <CalendarPicker
-                initialDate={initialDate}
-                minDate={'2010-01-01'}
-                onDateChange={DateChange}
-                maxDate={moment().format('YYYY-MM-DD')}
-                monthFormat={'MM/yyyy'}
-                showDayStragglers={true}
-                dayLabelsWrapper={{
-                    backgroundColor:colors.dark_primary_color, 
-                    borderWidth:1,
-                    borderColor:"#0001",
-                   
-                    paddingTop:scale(5),
-                    paddingBottom:scale(5),
-                    borderRadius:scale(100),
-                }}
-                todayBackgroundColor={colors.default_primary_color}
-                todayTextStyle={{
-                    backgroundColor:colors.default_primary_color,
-                    color:"#fff",
-                    fontFamily:fonts.Medium,
-                    includeFontPadding:false
-                }}
-                selectedDayStyle={{
-                    backgroundColor:colors.dark_primary_color,
+            <View style={{justifyContent:"center", alignItems:"center"}}>
+                <CalendarPicker
+                    initialDate={initialDate}
+                    minDate={'2010-01-01'}
+                    onDateChange={DateChange}
+                    maxDate={moment().format('YYYY-MM-DD')}
+                    monthFormat={'MM/yyyy'}
+                    showDayStragglers={true}
+                    dayLabelsWrapper={{
+                        backgroundColor:colors.dark_primary_color, 
+                        borderWidth:1,
+                        borderColor:"#0001",
                     
-                }}
-                selectedDayTextStyle={{
-                    color:"#fff",
-                    fontFamily:fonts.Medium,
-                    includeFontPadding:false
-                }}
-                selectedRangeStyle={{
-                    backgroundColor:colors.dark_primary_color,
-                    color:"#fff",
-                    fontFamily:fonts.Medium
-                }}
-                headerWrapperStyle={{
-                    backgroundColor:colors.dark_primary_color, 
-                    flexDirection:"column",
-                    alignItems:"flex-start",
+                        paddingTop:scale(5),
+                        paddingBottom:scale(5),
+                        borderRadius:scale(100),
+                    }}
+                    todayBackgroundColor={colors.default_primary_color}
+                    todayTextStyle={{
+                        backgroundColor:colors.default_primary_color,
+                        color:"#fff",
+                        fontFamily:fonts.Medium,
+                        includeFontPadding:false
+                    }}
+                    selectedDayStyle={{
+                        backgroundColor:colors.dark_primary_color,
+                        
+                    }}
+                    selectedDayTextStyle={{
+                        color:"#fff",
+                        fontFamily:fonts.Medium,
+                        includeFontPadding:false
+                    }}
+                    selectedRangeStyle={{
+                        backgroundColor:colors.dark_primary_color,
+                        color:"#fff",
+                        fontFamily:fonts.Medium
+                    }}
+                    headerWrapperStyle={{
+                        backgroundColor:colors.dark_primary_color, 
+                        flexDirection:"column",
+                        alignItems:"flex-start",
+                        
+                        paddingTop:scale(5),
+                        paddingBottom:scale(10),
                     
-                    paddingTop:scale(5),
-                    paddingBottom:scale(10),
-                   
-                }}
-                monthTitleStyle={{
-                    ...textStyles.heading, fontSize:scale(14), color:"#fff",
-                    marginTop:scale(18),
-                    width:wp(30),
+                    }}
+                    monthTitleStyle={{
+                        ...textStyles.heading, fontSize:scale(14), color:"#fff",
+                        marginTop:scale(18),
+                        width:wp(30),
 
-                    textAlign:"left"
-                }}
-                yearTitleStyle={{
-                    ...textStyles.skills_text, color:"#fff",
-                    position:"absolute",
-                    left:-wp(31.5),
-                    top:-scale(15),
-                   
-                    textAlign:"left",
-                    width:wp(30),
+                        textAlign:"left"
+                    }}
+                    yearTitleStyle={{
+                        ...textStyles.skills_text, color:"#fff",
+                        position:"absolute",
+                        left:-wp(31.5),
+                        top:-scale(15),
                     
-                }}
-                previousComponent={
-                    <TouchableOpacity 
-                        onPress={() => {
-                            setInitialDate(moment(initialDate).add(-1,"month").format('YYYY-MM-DD'))
-                        }}
-                        style={{position:"absolute",top:15,  right:-wp(80),zIndex:1000, }}
-                    >
-                        <Entypo color={"#fff"} name="chevron-left" size={scale(24)}  />
-                    </TouchableOpacity>
-                }
-                nextComponent={
-                    <TouchableOpacity 
-                        onPress={() => {
-                            setInitialDate(moment(initialDate).add(1,"month").format('YYYY-MM-DD'))
-                        }}
-                        style={{position:"absolute",bottom:0, left:wp(85)}}
-                    >
-                        <Entypo color={"#fff"} name="chevron-right" size={scale(24)}  />
-                    </TouchableOpacity>
-                }
-                customDayHeaderStyles={() => {
-                    return{
-                          textStyle: {
-                            color: '#fff',
-                            fontFamily:fonts.Medium,
-                            includeFontPadding:false
-                          }
+                        textAlign:"left",
+                        width:wp(30),
+                        
+                    }}
+                    previousComponent={
+                        <TouchableOpacity 
+                            onPress={() => {
+                                setInitialDate(moment(initialDate).add(-1,"month").format('YYYY-MM-DD'))
+                            }}
+                            style={{position:"absolute",top:15,  right:-wp(80),zIndex:1000, }}
+                        >
+                            <Entypo color={"#fff"} name="chevron-left" size={scale(24)}  />
+                        </TouchableOpacity>
                     }
-                }}
-                textStyle={{
-                    color: 'rgba(0,0,0,.7)',
-                    fontFamily:fonts.Medium,
-                    includeFontPadding:false  
-                }}
-                allowRangeSelection={true}
-            />
+                    nextComponent={
+                        <TouchableOpacity 
+                            onPress={() => {
+                                setInitialDate(moment(initialDate).add(1,"month").format('YYYY-MM-DD'))
+                            }}
+                            style={{position:"absolute",bottom:0, left:wp(85)}}
+                        >
+                            <Entypo color={"#fff"} name="chevron-right" size={scale(24)}  />
+                        </TouchableOpacity>
+                    }
+                    customDayHeaderStyles={() => {
+                        return{
+                            textStyle: {
+                                color: '#fff',
+                                fontFamily:fonts.Medium,
+                                includeFontPadding:false
+                            }
+                        }
+                    }}
+                    textStyle={{
+                        color: 'rgba(0,0,0,.7)',
+                        fontFamily:fonts.Medium,
+                        includeFontPadding:false  
+                    }}
+                    allowRangeSelection={true}
+                />
+                <CustomButton 
+                    onPress={() => setIsCustomRange()}
+                />
+            </View>
         );
     };
 

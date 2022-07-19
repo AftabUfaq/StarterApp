@@ -83,21 +83,45 @@ const HalfPieChart = React.lazy(() => import('./HalfPieChart'))
             { quarter:"Interviews", earnings: .14 },
             { quarter:"Placements", earnings: .19 },
         ];
+        const user_sales_actvites = [
+            { quarter:"General Notes", earnings: .3 },
+            { quarter:"Live Connect", earnings: .6 },
+            { quarter:"Recieeved Email", earnings: .4 },
+            { quarter:"Send Mails", earnings: .5 },
+            { quarter:"Job Orders", earnings: .13 },
+            { quarter:"Candidates", earnings: .16 },
+            { quarter:"Interviews", earnings: .14 },
+            { quarter:"Placements", earnings: .19 },
+        ];
         const colors = ["tomato", "orange", "gold", "cyan", "navy", "pink", "gray","red" ]
         const RenderPieChart = useMemo(() => {
             return(
                 <>
-                <Suspense fallback={<LoadingView />} >
-                    <BarChart data={data} />
-                    
-                </Suspense>
-                <Suspense fallback={<LoadingView />} >
-                    <PieChart data={data} colors={colors} />
-                </Suspense>
-                <Suspense fallback={<LoadingView />} >
-                    <HalfPieChart data={data}  colors={colors}/>
-                </Suspense>
-                 
+                    <Suspense fallback={<LoadingView />} >
+                        <BarChart data={data} title={"General"} />
+                    </Suspense>
+                    <Suspense fallback={<LoadingView />} >
+                        <PieChart data={data} colors={colors} />
+                    </Suspense>
+                    <Suspense fallback={<LoadingView />} >
+                        <HalfPieChart data={data}  colors={colors} tilte={"Recruiter Performance"}/>
+                    </Suspense>
+                    {/* <Suspense fallback={<LoadingView />} >
+                        <BarChart data={data} title={"Candidates in Stage"} />
+                    </Suspense>
+                     <Suspense fallback={<LoadingView />} >
+                        <HalfPieChart data={data}  colors={colors} title={"Sales Performance"} />
+                    </Suspense>
+                  <Suspense fallback={<LoadingView />} >
+                        <BarChart data={data} title={"Sales Activities"} />
+                    </Suspense>
+                      <Suspense fallback={<LoadingView />} >
+                        <BarChart data={data} title={"Users Activities"} />
+                    </Suspense> */}
+                    {/*<Suspense fallback={<LoadingView />} >
+                        <BarChart data={user_sales_actvites} title={"Sales Users Activities"} />
+                    </Suspense> */}
+
                 </>
             )
         },[data, colors])

@@ -3,7 +3,7 @@ import {View, StyleSheet, Text ,ActivityIndicator, TouchableOpacity} from 'react
 import { scale, verticalScale } from "react-native-size-matters";
 import { AppScreenWidth, width } from "../constants/sacling";
 import {colors, fonts} from '../constants/theme'
-const CustomButton = ({onPress,width=AppScreenWidth, loading ,backgroundColor= colors.dark_primary_color, text, loadingText}) => {
+const CustomButton = ({onPress,width=AppScreenWidth, loading ,backgroundColor= colors.dark_primary_color, text="Done", loadingText}) => {
     return(
     <TouchableOpacity
         style={{

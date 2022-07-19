@@ -37,7 +37,7 @@ import moment from 'moment';
             return(
                 <PlacementCard 
                     item={item}
-                    onPress={() => navigation.navigate(MainRoutes.PlacementDetailsScreen)}
+                    onPress={() => navigation.navigate(MainRoutes.EditPlacementScreen)}
                    
                 />
             )

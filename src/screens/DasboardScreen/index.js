@@ -19,12 +19,14 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import widget_data from './widgetData.json'
 import Modal from 'react-native-modal';
 import { textStyles } from '../../styles';
-import { wp } from '../../constants/sacling';
+import { hp, wp } from '../../constants/sacling';
 import { scale } from 'react-native-size-matters';
 import useIsReady from '../../hooks/useIsReady';
 import moment from 'moment';
 import CustomCalendar from './RangeCalendar';
-
+import MultipleDropDownSelect from './MultipleDropDownSelect';
+import * as Animatable from "react-native-animatable";
+import CustomButton from '../../components/Button';
     const renderScene = SceneMap({
         DashboardAnaylyticsScreen: DashboardAnaylyticsScreen,
         ReportsScreen: ReportsScreen,
@@ -39,6 +41,7 @@ import CustomCalendar from './RangeCalendar';
         const [show_filter_modal, setShowFilterModal] = useState(false)
         const [show_widget_modal , setShowWidgetModal] = useState(false)
         const [widgetData,  setWidgetData] = useState(widget_data)
+        const [iscustomRange , setIsCustomRange] = useState(false)
         const [routes] = React.useState([
             {
                 key: 'DashboardAnaylyticsScreen', 
@@ -54,9 +57,57 @@ import CustomCalendar from './RangeCalendar';
             },
         ]);
         const [filters, setFilter] = useState([
-            "Yesterday", "Last 7 Days", "Last 14 Days", "Last Week", "Last 2 Week", "This Month", "Last 3 Months", "Last 6 Months", "Last 9 Months", "Last 12 Months",
+            {
+                name:"Yesterday",
+                duration:1,
+                type:"days"
+            },
+            {
+                name:"Last Week",
+                duration:1,
+                type:"week"
+            },
+            {
+                name:"Last 14 Days",
+                duration:14,
+                type:"days"
+            },
+            {
+                name:"Last 2 Week",
+                duration:2,
+                type:"weeks"
+            },
+            
+            {
+                name:"This Month",
+                duration:1,
+                type:"months"
+            },
+
+            {
+                name:"Last 3 Months",
+                duration:3,
+                type:"months"
+            },
+            {
+                name:"Last 6 Months",
+                duration:6,
+                type:"months"
+            },
+            {
+                name:"Last 9 Months",
+                duration:9,
+                type:"months"
+            },
+
+            {
+                name:"Last 12 Months",
+                duration:12,
+                type:"months"
+            },
         ])
-       
+        const [rangeStartDate, setRangeStartDate ] = useState(null)
+        const [rangeEndDate, setRangeEndDate] = useState(null)
         const renderTabBar = props => (
             <TabBar
               {...props}
@@ -72,13 +123,22 @@ import CustomCalendar from './RangeCalendar';
               style={{ backgroundColor:colors.dark_primary_color }}
             />
         );
-       if(!isReady){
-            return(
-                <View style={{flex:1,justifyContent:"center", alignItems:"center",}} >
-                    <ActivityIndicator  size={"large"} color={colors.dark_primary_color} />
-                </View>
-        )
-       }
+
+        const SelectRangefromFilter = (value, type) => {
+            setRangeStartDate(moment().format('YYYY-MM-DD'))
+          
+            setRangeEndDate(moment().add(-value, type).format('YYYY-MM-DD'))
+        }
+        useEffect(() => {
+
+        },[rangeStartDate,rangeEndDate])
+        if(!isReady){
+                return(
+                    <View style={{flex:1,justifyContent:"center", alignItems:"center",}} >
+                        <ActivityIndicator  size={"large"} color={colors.dark_primary_color} />
+                    </View>
+            )
+        }
         return (
             <SafeAreaView style={{flex:1, backgroundColor:colors.dark_primary_color}} >
                 <StatusBar barStyle={"light-content"} />
@@ -90,10 +150,7 @@ import CustomCalendar from './RangeCalendar';
                     FilterPress={() => setShowFilterModal(!show_filter_modal)}
                     NotificationPress={() => setShowWidgetModal(!show_widget_modal)}
                 />
-                <View style={{backgroundColor:"#fff", paddingVertical:20, borderWidth:2, }}>
-                    <CustomCalendar initialDate={initialDate} setInitialDate={setInitialDate} />
-                   
-                </View>
+               
                 <TabView
                     navigationState={{ index, routes }}
                     renderScene={renderScene}
@@ -183,23 +240,25 @@ import CustomCalendar from './RangeCalendar';
                         </View>
                         <FlatList 
                             data={filters}
-                            numColumns={2}
+                            numColumns={3}
+                            style={{maxHeight:hp(21)}}
                             columnWrapperStyle={{
-                                justifyContent:"space-evenly",
-                             
-                               
+                                justifyContent:"space-between",
+                                width:wp(96)
                             }}
                             renderItem={({item,index}) => {
                                 return(
                                     <TouchableOpacity 
+                                    onPress={() => {SelectRangefromFilter(item.duration, item.type)}}
+                                        key={`${index}`}
                                         style={styles.FilteritemVew}>
                                         <Text 
                                             style={{
                                                 ...textStyles.Label,
-                                                color:colors.dark_primary_color,
+                                                color:colors.text_primary_color,
                                                 textAlign:"center"
                                             }}>
-                                            {item}
+                                            {item.name}
                                         </Text> 
                                     </TouchableOpacity>
                                 )
@@ -207,11 +266,17 @@ import CustomCalendar from './RangeCalendar';
                             ListFooterComponent={() => {
                                 return(
                                     <TouchableOpacity 
-                                        style={{...styles.FilteritemVew, width:wp(94)}}>
+                                        onPress={() => setIsCustomRange(!iscustomRange)}
+                                        style={{
+                                            ...styles.FilteritemVew, 
+                                            paddingVertical:scale(10),
+                                            backgroundColor:colors.dark_primary_color,
+                                            width:wp(96)
+                                        }}>
                                         <Text 
                                             style={{
                                                 ...textStyles.Label,
-                                                color:colors.dark_primary_color,
+                                                color:colors.white,
                                                 textAlign:"center"
                                             }}>
                                             Custom range
@@ -220,9 +285,59 @@ import CustomCalendar from './RangeCalendar';
                                 )
                             }}
                         />
-                          <CustomCalendar initialDate={initialDate} setInitialDate={setInitialDate} />
+                        {rangeStartDate && rangeEndDate  && 
+                            <TouchableOpacity 
+                                onPress={() => setIsCustomRange(!iscustomRange)}
+                                style={{
+                                    ...styles.FilteritemVew, 
+                                    width:wp(96),
+                                    marginTop:scale(0), 
+                                    alignItems:"flex-start",
+                                }}>
+                                     <Text 
+                                            style={{
+                                                ...textStyles.Label,
+                                                color:colors.text_primary_color,
+                                                textAlign:"center"
+                                            }}>
+                                          Selected Range
+                                        </Text> 
+                            <Text 
+                                style={{
+                                    ...textStyles.Label,
+                                    color:colors.dark_primary_color,
+                                    textAlign:"center"
+                                }}>
+                                From   {rangeStartDate}   to   {rangeEndDate}
+                            </Text> 
+                        </TouchableOpacity>}
+                        <MultipleDropDownSelect />
+                        {
+                            iscustomRange &&
+                                <Animatable.View 
+                                    animation={"fadeInUpBig"}
+                                    iterationCount={1}
+                                    useNativeDriver={true}
+                                    // animationIn={"fadeInUpBig"}
+                                    // animationOut={"fadeOutDown"}
+                                    style={{position:"absolute",top:hp(20), backgroundColor:"#fff"}}>
+                                    <CustomCalendar 
+                                        initialDate={initialDate} 
+                                        setInitialDate={setInitialDate}
+                                        setRangeStartDate={setRangeStartDate} 
+                                       
+                                        setRangeEndDate={setRangeEndDate}
+                                        setIsCustomRange={() => setIsCustomRange(!iscustomRange)}
+                                    />
+                                </Animatable.View>
+                        }
+                       
+                        {!iscustomRange && 
+                            <View style={{position:"absolute", bottom:10}}>
+                                <CustomButton text={"Filter Results"} /> 
+                            </View>   
+                        }
                     </View>
-                  
                 </Modal>
             </SafeAreaView>
             
@@ -236,7 +351,9 @@ const styles = StyleSheet.create({
     mainView:{
         flex:1,
         backgroundColor:"#fff",
-        paddingBottom:scale(10)
+        paddingBottom:scale(10),
+        alignItems:"center",
+       
     },
     HeaderView:{
         width:wp(100),
@@ -266,7 +383,7 @@ const styles = StyleSheet.create({
         flexDirection:"row"
     },
     FilteritemVew:{ 
-        width:wp(45),
+        width:wp(30),
         borderRadius:scale(5),
         alignSelf:"center", 
         marginTop:scale(5), 
@@ -277,7 +394,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         backgroundColor:"rgba(0,0,0,.01)", 
         flexDirection:"column", 
-        padding:scale(10)
+        padding:scale(5)
     },
     textView:{ 
         width:wp(85),

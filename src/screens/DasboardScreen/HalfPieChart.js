@@ -5,11 +5,11 @@ import { scale } from 'react-native-size-matters';
 import {textStyles } from '../../styles';
 import { colors, fonts } from '../../constants/theme';
 import { width, wp } from '../../constants/sacling';
-const HalfPieChart = ({data, colors}) => {
+const HalfPieChart = ({data, colors, title}) => {
    
         return (
             <View style={styles.CardView}>
-            <Text style={styles.CardViewTitle}>Recruiter Performance</Text>
+            <Text style={styles.CardViewTitle}> {title}</Text>
             <View style={{ flex:1, alignItems:"center", justifyContent:"space-between"}}>
              
                 <VictoryPie   

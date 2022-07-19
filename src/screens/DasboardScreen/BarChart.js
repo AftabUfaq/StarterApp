@@ -9,11 +9,11 @@ import { scale } from 'react-native-size-matters';
 import {textStyles } from '../../styles';
 import { colors, fonts } from '../../constants/theme';
 import { width, wp } from '../../constants/sacling';
-const BarChart = ({data}) => {
+const BarChart = ({data, title}) => {
    
     return(
         <View style={styles.CardView}>
-            <Text style={styles.CardViewTitle}>General</Text>
+            <Text style={styles.CardViewTitle}>{title}</Text>
             <VictoryChart
                 
                 height={wp(60)}
