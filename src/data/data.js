@@ -135,3 +135,74 @@ export const companies_data = [
     label: 'Right Source',
   },
 ];
+
+export const state_data = [
+  {
+    value: 1,
+    label: 'Panjab',
+  },
+  {
+    value: 2,
+    label: 'KPK',
+  },
+  {
+      value: 6,
+      label: 'Baloch',
+    },
+  {
+    value: 3,
+    label: 'Sindh',
+  },
+  {
+    value: 4,
+    label: 'Gilgithh',
+  },
+  {
+    value: 5,
+    label: 'Kashmir',
+  },
+]
+
+export const country_data = [
+  {
+    value: 1,
+    label: 'Pakistan',
+  },
+  {
+    value: 2,
+    label: 'Iran',
+  },
+  {
+    value: 3,
+    label: 'India',
+  },
+  {
+    value: 4,
+    label: 'Afghanistan',
+  },
+  {
+    value: 5,
+    label: 'Russia',
+  },
+  
+  {
+    value: 6,
+    label: 'Austrilia',
+  },
+  
+  {
+    value: 7,
+    label: 'Saudia',
+  },
+  
+  {
+    value: 8,
+    label: 'Uzbakistan',
+  },
+  
+  {
+    value: 9,
+    label: 'Misar',
+  },
+
+ ]

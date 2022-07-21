@@ -33,7 +33,7 @@ const CustomTextInput = ({
                 marginVertical:scale(0)
             }} >
            
-                <Text style={{...textStyles.Label, color:lableColor}}>
+                <Text style={{...textStyles.Label, marginBottom:scale(3), color:lableColor}}>
                         {placeholder}
                 </Text>
            

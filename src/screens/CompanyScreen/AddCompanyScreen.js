@@ -12,10 +12,11 @@ import Spacer from '../../components/Spacer';
 import MobileNumberInput from '../../components/MobileNumberInput';
 import CountryModal from '../../components/CountryModal'
 import { wp } from '../../constants/sacling';
+import FormModal from '../../components/FormModal';
     const AddCompanyScreen = ({navigation}) => { 
          ///// ******        Companies  Status Data             ****** /////
-
-         const [company_status, setCompaniesStatus] = useState([
+      const [companies_modal_visible, setCompaniesModalVisibe] = useState(false)
+      const [company_status, setCompaniesStatus] = useState([
           {
             value: 1,
             label: 'Active',
@@ -53,9 +54,9 @@ import { wp } from '../../constants/sacling';
             label: 'Compaign',
           },
 
-         
+          
       ]);
-  
+      const [selected_company, setSelectCompany] = useState("US")
       //////******        Contacts Data             ****** //////////
 
       const [company_own_list, setCompanyOwnerList] = useState([
@@ -79,7 +80,7 @@ import { wp } from '../../constants/sacling';
             value: 5,
             label: 'Faryal Amin',
           },
-         
+          
       ]);
       const [selected_contact, setSelectContact] = useState("")
       const [contacts_modal_visible, setContactsModalVisibe] = useState(false)
@@ -135,16 +136,16 @@ import { wp } from '../../constants/sacling';
             value: "Whatsapp",
             label: 'Whatsapp',
           },
-         
+          
           {
             value: "Youtube",
             label: 'Youtube',
           },
-         
+          
       ]);
     
-      const [selected_company, setSelectCompany] = useState("US")
-      const [companies_modal_visible, setCompaniesModalVisibe] = useState(false)
+      const [selected_country_code, setSelectCountryCode] = useState("US")
+      const [countries_modal_visible, setCountryModalVisibe] = useState(false)
         //////******        Periorty Data             ****** //////////
 
       const [priority, setPrioritys] = useState([
@@ -250,11 +251,11 @@ import { wp } from '../../constants/sacling';
           value: 5,
           label: 'Russia',
         },
-       ]);
+      ]);
 
-       //// State DATa
+        //// State DATa
 
-       const [states, setstates] = useState([
+      const [states, setstates] = useState([
         {
           value: 1,
           label: 'Panjab',
@@ -279,29 +280,37 @@ import { wp } from '../../constants/sacling';
           value: 5,
           label: 'Kashmir',
         },
-    ]);
-    const [selected_state, setSelectstate] = useState("")
-    const [state_modal_visible, setstatesModalVisibe] = useState(false)
-    const [state_name, setstateName] = useState("")
+      ]);
+      const [selected_state, setSelectstate] = useState("")
+      const [state_modal_visible, setstatesModalVisibe] = useState(false)
+      const [state_name, setstateName] = useState("")
 
 
-    const [selected_country, setSelectcountry] = useState("")
-    const [country_modal_visible, setcountrysModalVisibe] = useState(false)
-    const [country_name, setcountryName] = useState("")
+      const [selected_country, setSelectcountry] = useState("")
+      const [country_modal_visible, setcountrysModalVisibe] = useState(false)
+      const [country_name, setcountryName] = useState("")
 
 
-        const [company_data, setJobData] = useState({
-          job_title:"",job_title_error:"",
-          website:"", website_error:"",
-          socialmedia:[], social_media_error:"",
-          address:"",address_error:"",
-          city:"", state:"", zip:"",
-          city_error:"", state_error:"", zip_error:"",
-          state:"",state_error:"",
-          country:"", country_error:""
-        })
-        const [company_name, setCompanyName] = useState("")
+      const [company_data, setJobData] = useState({
+        job_title:"",job_title_error:"",
+        website:"", website_error:"",
+        socialmedia:[], social_media_error:"",
+        address:"",address_error:"",
+        city:"", state:"", zip:"",
+        city_error:"", state_error:"", zip_error:"",
+        state:"",state_error:"",
+        country:"", country_error:""
+      })
+      const [company_name, setCompanyName] = useState("")
+      
+      const [periority_modal, setPriorityModal] = useState(false)
+      const [newpriorityname, setNewPriorityName] = useState("")
 
+      const [technology_modal, setTechnologyModal] = useState(false)
+      const [newtechnology_name, setNewTechnologyName] = useState("")
+
+      const [industry_modal, setIndustryModal] = useState(false)
+      const [newindustry_name, setNewndustryName]  = useState("")
         return (
             <SafeAreaView style={commonStyles.SafeAreaView} >
                 <StatusBar barStyle={"light-content"} />
@@ -330,7 +339,7 @@ import { wp } from '../../constants/sacling';
                         <DropdownAddComponent 
                             show_add_button={false}
                             width={wp(96)}
-                            AddButtonPress={() => alert("company")}
+                          
                             placeholder={"status"}
                             items={company_status}
                             setItems={setCompaniesStatus}
@@ -363,10 +372,10 @@ import { wp } from '../../constants/sacling';
                           <CountryModal 
                               placeholder={"code"}
                               items={countires}
-                              selectedItems={selected_company}
-                              setSelectItems={setSelectCompany}
-                              isVisible={companies_modal_visible}
-                              setIsVisible={setCompaniesModalVisibe}
+                              selectedItems={selected_country_code}
+                              setSelectItems={setSelectCountryCode}
+                              isVisible={countries_modal_visible}
+                              setIsVisible={setCountryModalVisibe}
                             
                           />  
                           <MobileNumberInput
@@ -450,7 +459,7 @@ import { wp } from '../../constants/sacling';
                       <DropdownAddComponent 
                             show_add_button={false}
                             width={wp(96)}
-                            AddButtonPress={() => alert("company")}
+                           
                             placeholder={"state"}
                             items={states}
                             setItems={setstates}
@@ -465,7 +474,7 @@ import { wp } from '../../constants/sacling';
                         
 
                         <DropdownAddComponent 
-                            AddButtonPress={() => alert("company")}
+                            AddButtonPress={() => setPriorityModal(true)}
                             placeholder={"priority"}
                             items={priority}
                             setItems={setPrioritys}
@@ -480,7 +489,7 @@ import { wp } from '../../constants/sacling';
                       <DropdownAddComponent 
                             show_add_button={true}
                             width={wp(84)}
-                            AddButtonPress={() => alert("company")}
+                            AddButtonPress={() => setTechnologyModal(true) }
                             placeholder={"technology"}
                             items={technologys}
                             setItems={setTechnologys}
@@ -495,7 +504,7 @@ import { wp } from '../../constants/sacling';
                         <DropdownAddComponent 
                             show_add_button={true}
                             width={wp(84)}
-                            AddButtonPress={() => alert("company")}
+                            AddButtonPress={() =>setIndustryModal(true) }
                             placeholder={"industry"}
                             items={Industrys}
                             setItems={setIndustrys}
@@ -517,6 +526,88 @@ import { wp } from '../../constants/sacling';
                         </View>
                         <Spacer height={scale(10)} />
                     </ScrollView>
+                    <FormModal 
+                        isVisible={periority_modal} 
+                        onClose={() => setPriorityModal(false)}>
+                        <CustomTextInput
+                            placeholder={'New priority'}
+                            value={newpriorityname}
+                            borderWidth={1}
+                            title={"Priority"}
+                            TextInputwidth={wp(90)}
+                            lableColor={colors.dark_primary_color}
+                            borderRadius={scale(5)}
+                            onChangeText={text => {
+                                setNewPriorityName(text)
+                            }}
+                            errorMessage={""}
+                        /> 
+                        <View style={{alignSelf:"center", marginTop:scale(10)}}>
+                            <CustomButton 
+                                loading={false}
+                                width={wp(90)}
+                                loadingText={"Submitting"}
+                                onPress={() => alert("false")}
+                                text={"Save"}
+                            />
+                        </View>   
+                    </FormModal>
+
+                    <FormModal 
+                        isVisible={technology_modal} 
+                        title={"New Technology"}
+                        onClose={() => setTechnologyModal(false)}>
+                        <CustomTextInput
+                            placeholder={'New Technology'}
+                            value={newtechnology_name}
+                            borderWidth={1}
+                            title={"Technology"}
+                            TextInputwidth={wp(90)}
+                            lableColor={colors.dark_primary_color}
+                            borderRadius={scale(5)}
+                            onChangeText={text => {
+                              setNewTechnologyName(text)
+                            }}
+                            errorMessage={""}
+                        /> 
+                        <View style={{alignSelf:"center", marginTop:scale(10)}}>
+                            <CustomButton 
+                                loading={false}
+                                width={wp(90)}
+                                loadingText={"Submitting"}
+                                onPress={() => alert("false")}
+                                text={"Save"}
+                            />
+                        </View>   
+                    </FormModal>
+
+                    <FormModal 
+                        isVisible={industry_modal} 
+                        title={"New Industry"}
+                        onClose={() => setIndustryModal(false)}>
+                        <CustomTextInput
+                            placeholder={'New Industry'}
+                            value={newindustry_name}
+                            borderWidth={1}
+                            title={"Industry"}
+                            TextInputwidth={wp(90)}
+                            lableColor={colors.dark_primary_color}
+                            borderRadius={scale(5)}
+                            onChangeText={text => {
+                              setNewndustryName(text)
+                            }}
+                            errorMessage={""}
+                        /> 
+                        <View style={{alignSelf:"center", marginTop:scale(10)}}>
+                            <CustomButton 
+                                loading={false}
+                                width={wp(90)}
+                                loadingText={"Submitting"}
+                                onPress={() => alert("false")}
+                                text={"Save"}
+                            />
+                        </View>   
+                    </FormModal>
                 </View>
             </SafeAreaView> 
         );

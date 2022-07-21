@@ -1,22 +1,19 @@
 import React, {useState} from 'react';
-import {StyleSheet,ScrollView , TouchableOpacity,View,Text} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import { textStyles} from '../styles/textStyles';
+import {StyleSheet} from 'react-native';
 import { colors, fonts } from '../constants/theme';
-import { scale, verticalScale } from 'react-native-size-matters';
-import { AppScreenWidth, hp, width, wp } from '../constants/sacling';
+import { scale } from 'react-native-size-matters';
+import {  wp } from '../constants/sacling';
 import DropDownPicker from 'react-native-dropdown-picker';
+import Ionicons from 'react-native-vector-icons/Ionicons'
     const CONTAINER_WIDTH = wp(17)
     const CountryModal = ({
                 placeholder,
                 items,
-                
                 setItems,
                 selectedItems,
                 setSelectItems,
                 isVisible,
                 setIsVisible,
-      
             }) => { 
             return (
                 <DropDownPicker
@@ -55,6 +52,17 @@ import DropDownPicker from 'react-native-dropdown-picker';
                     customItemContainerStyle={{
                         backgroundColor: "#000"
                     }}
+                    CloseIconComponent={({style}) => (
+                        <Ionicons
+                            color={"#fff"}
+                            name={"close"} 
+                            size={scale(28)}
+                            style={{
+                              
+                                alignSelf:"center"
+                            }} 
+                        />
+                    )}
                     closeIconStyle={{
                         width: scale(30),
                         height: scale(30)
@@ -137,12 +145,13 @@ const styles = StyleSheet.create({
     },
     searchTextInputProps:{
         borderWidth:0,
-        backgroundColor:"rgba(0,0,0,.1)",
+        backgroundColor:"rgba(255,255,255,.9)",
         height:scale(35),
     },
     searchContainerStyle:{
         borderBottomColor:"rgba(0,0,0,.1)",
         borderBottomWidth:2,
+        backgroundColor:colors.dark_primary_color,
         width:wp(100),
         height:scale(45),
         padding:scale(5),

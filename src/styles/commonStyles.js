@@ -6,7 +6,7 @@ import { colors } from "../constants/theme";
 export const commonStyles = StyleSheet.create({
     SafeAreaView:{
         flex:1, 
-        backgroundColor:colors.dark_primary_color
+        backgroundColor:colors.white
     },
     container:{
         flex:1,

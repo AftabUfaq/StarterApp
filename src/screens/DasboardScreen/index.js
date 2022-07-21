@@ -13,7 +13,7 @@ import CustomHeader from '../../components/SearchHeader';
 import { colors, fonts } from '../../constants/theme';
 import { TabView, SceneMap,TabBar } from 'react-native-tab-view';
 import DashboardAnaylyticsScreen from './DashboardAnaylyticsScreen';
-import ReportsScreen from './ReportsScreen';
+// import ReportsScreen from './ReportsScreen';
 import BulkMailScreen from './BulkMailScreen';
 import Entypo from 'react-native-vector-icons/Entypo'
 import widget_data from './widgetData.json'
@@ -29,7 +29,7 @@ import * as Animatable from "react-native-animatable";
 import CustomButton from '../../components/Button';
     const renderScene = SceneMap({
         DashboardAnaylyticsScreen: DashboardAnaylyticsScreen,
-        ReportsScreen: ReportsScreen,
+     //   ReportsScreen: ReportsScreen,
         BulkMailScreen:BulkMailScreen
     });
     const DashBoardScreen = ({navigation}) => {
@@ -47,10 +47,10 @@ import CustomButton from '../../components/Button';
                 key: 'DashboardAnaylyticsScreen', 
                 title: 'Analytics'
             },
-            { 
-                key: 'ReportsScreen', 
-                title: 'Reports' 
-            },
+            // { 
+            //     key: 'ReportsScreen', 
+            //     title: 'Reports' 
+            // },
             {   
                 key: 'BulkMailScreen', 
                 title: 'Bulk Mail'

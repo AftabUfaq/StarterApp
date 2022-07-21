@@ -12,6 +12,8 @@ import Spacer from '../../components/Spacer';
 import MobileNumberInput from '../../components/MobileNumberInput';
 import CountryModal from '../../components/CountryModal'
 import { wp } from '../../constants/sacling';
+import AddCompnayModal from '../../components/AddCompnayModal';
+import { country_data, state_data } from '../../data/data';
     const AddContactScreen = ({navigation}) => { 
 
       const [companies, setCompanies] = useState([
@@ -233,57 +235,11 @@ import { wp } from '../../constants/sacling';
 
       ////// Country data 
 
-      const [countrys, setcountrys] = useState([
-        {
-          value: 1,
-          label: 'Pakistan',
-        },
-        {
-          value: 2,
-          label: 'Iran',
-        },
-        {
-          value: 3,
-          label: 'India',
-        },
-        {
-          value: 4,
-          label: 'Afghanistan',
-        },
-        {
-          value: 5,
-          label: 'Russia',
-        },
-       ]);
+      const [countrys, setcountrys] = useState(country_data);
 
        //// State DATa
 
-       const [states, setstates] = useState([
-        {
-          value: 1,
-          label: 'Panjab',
-        },
-        {
-          value: 2,
-          label: 'KPK',
-        },
-        {
-            value: 6,
-            label: 'Baloch',
-          },
-        {
-          value: 3,
-          label: 'Sindh',
-        },
-        {
-          value: 4,
-          label: 'Gilgithh',
-        },
-        {
-          value: 5,
-          label: 'Kashmir',
-        },
-    ]);
+       const [states, setstates] = useState(state_data);
     const [selected_state, setSelectstate] = useState("")
     const [state_modal_visible, setstatesModalVisibe] = useState(false)
     const [state_name, setstateName] = useState("")
@@ -408,8 +364,8 @@ import { wp } from '../../constants/sacling';
                         />
                         
                         <DropdownAddComponent 
-                            show_add_button={false}
-                            width={wp(96)}
+                            show_add_button={true}
+                            width={wp(84)}
                             AddButtonPress={() => alert("Owner")}
                             placeholder={"Company"}
                             items={companies}
@@ -654,6 +610,7 @@ import { wp } from '../../constants/sacling';
                         <Spacer height={scale(10)} />
                     </ScrollView>
                 </View>
+                {/* <AddCompnayModal /> */}
             </SafeAreaView> 
         );
     };
@@ -669,7 +626,7 @@ const styles= StyleSheet.create({
     borderWidth:1,
     borderColor:colors.divide_color,
     borderRadius:scale(5),
-    overflow:"hidden",
+   
   
     alignSelf:"center",
     width:wp(96), 
