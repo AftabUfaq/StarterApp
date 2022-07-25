@@ -13,281 +13,64 @@ import MobileNumberInput from '../../components/MobileNumberInput';
 import CountryModal from '../../components/CountryModal'
 import { wp } from '../../constants/sacling';
 import AddCompnayModal from '../../components/AddCompnayModal';
-import { country_data, state_data } from '../../data/data';
+import { company_names_data, company_owner_list_data, company_status_data, contactAddScreenInitialState, country_data, preferred_contact_data, reports_to_data, socail_links_data, state_data } from '../../data/data';
+import AddContactModal from '../../components/AddContactModal';
     const AddContactScreen = ({navigation}) => { 
 
-      const [companies, setCompanies] = useState([
-        {
-          value: 1,
-          label: 'Zoobi Apps',
-        },
-        {
-          value: 2,
-          label: 'IFuture',
-        },
-        {
-          value: 3,
-          label: 'Codefreaks',
-        },
-        {
-          value: 4,
-          label: 'MetaFurture',
-        },
-        {
-          value: 5,
-          label: 'Right Source',
-        },
+        const [companies, setCompanies] = useState(company_names_data);
+        const [selected_company, setSelectCompany] = useState("")
+        const [companies_modal_visible, setCompaniesModalVisibe] = useState(false)
+        const [company_name, setCompanyName] = useState("")
+         
        
-    ]);
-    const [selected_company, setSelectCompany] = useState("")
-    const [companies_modal_visible, setCompaniesModalVisibe] = useState(false)
-    const [company_name, setCompanyName] = useState("")
-         ///// ******        Companies  Status Data             ****** /////
 
-         const [company_status, setCompaniesStatus] = useState([
-          {
-            value: 1,
-            label: 'Active',
-          },
-          {
-            value: 2,
-            label: 'DNS',
-          },
-          {
-            value: 3,
-            label: 'Inactive',
-          },
-          {
-            value: 4,
-            label: 'Lead',
-          },
-          {
-            value: 5,
-            label: 'Paking Lot',
-          },
-          {
-            value: 6,
-            label: 'Passive',
-          },
-          {
-            value: 7,
-            label: 'Past',
-          },
-          {
-            value: 8,
-            label: 'Prospecting',
-          },
-          {
-            value: 9,
-            label: 'Compaign',
-          },
-
-         
-      ]);
-      const [selected_company_status, setSelectedCompanyStatus] = useState("")
-      const [company_status_visible, setCompanStatusModalVisible] = useState(false)
-      //////******        Contacts Data             ****** //////////
-
-      const [company_own_list, setCompanyOwnerList] = useState([
-          {
-            value: 1,
-            label: 'Aftab Ameen',
-          },
-          {
-            value: 2,
-            label: 'Sajjad Ameen',
-          },
-          {
-            value: 3,
-            label: 'Abbas Ameen',
-          },
-          {
-            value: 4,
-            label: 'Tajul Amin',
-          },
-          {
-            value: 5,
-            label: 'Faryal Amin',
-          },
-         
-      ]);
-      const [selected_contact, setSelectContact] = useState("")
-      const [contacts_modal_visible, setContactsModalVisibe] = useState(false)
-      const [contact_name, setContactName] = useState("")
-
-      //////******        Socila Links             ****** //////////
-      const [socail_links, setSocialLinks] = useState([
-          {
-            value: "Disqus",
-            label: 'Disqus',
-          },
-          {
-            value: "Facebook",
-            label: 'Facebook',
-          },
-          {
-            value: "Google+",
-            label: 'Google+',
-          },
-          {
-            value: "LinkedIn",
-            label: 'LinkedIn',
-          },
-          {
-            value: "Pinterest",
-            label: 'Pinterest',
-          },
-          {
-            value: "Renren",
-            label: 'Renren',
-          },
-          {
-            value: "Skype",
-            label: 'Skype',
-          },
-          {
-            value: "Snapchat",
-            label: 'Snapchat',
-          },
-          {
-            value: "Tumblr",
-            label: 'Tumblr',
-          },
-          {
-            value: "Twitter",
-            label: 'Twitter',
-          },
-          {
-            value: "Vine",
-            label: 'Vine',
-          },
-          {
-            value: "Whatsapp",
-            label: 'Whatsapp',
-          },
-         
-          {
-            value: "Youtube",
-            label: 'Youtube',
-          },
-         
-      ]);
-    
-      const [mobile_code, setMobileCode] = useState("US")
-      const [mobile_code_modal_visible, setMobileCodeModalVisibe] = useState(false)
-        //////******        Periorty Data             ****** //////////
-
-      const [preferred_contact, setpreferred_contacts] = useState([
-        {
-          value: 1,
-          label: 'Home',
-        },
-        {
-          value: 2,
-          label: 'Work',
-        },
-        {
-          value: 3,
-          label: 'Cell',
-        },
-        {
-          value: 4,
-          label: 'Email',
-        },
-        {
-          value: 5,
-          label: 'Fax',
-        },
-      
-      ]);
-      const [selected_preferred_contact, setSelectpreferred_contact] = useState("")
-      const [preferred_contact_modal_visible, setpreferred_contactsModalVisibe] = useState(false)
-      const [preferred_contact_name, setpreferred_contactName] = useState("")
-
-      //////******        Techology Data             ****** //////////
-
-
-      //////******        Reports To Data             ****** //////////
-      const [ReportsTo, setReportsTo] = useState([
-        {
-          value: 1,
-          label: 'Numan Ghauri',
-        },
-        {
-          value: 2,
-          label: 'Choudary Ahtar',
-        },
-        {
-          value: 3,
-          label: 'Mark zack',
-        },
-        {
-          value: 4,
-          label: 'Sohaib Latif',
-        },
+        const [company_status, setCompaniesStatus] = useState(company_status_data);
+        const [selected_company_status, setSelectedCompanyStatus] = useState("")
+        const [company_status_visible, setCompanStatusModalVisible] = useState(false)
         
+     
+
+        const [company_own_list, setCompanyOwnerList] = useState(company_owner_list_data);
+        const [selected_contact, setSelectContact] = useState("")
+        const [contacts_modal_visible, setContactsModalVisibe] = useState(false)
+        const [contact_name, setContactName] = useState("")
+
+    
+        const [socail_links, setSocialLinks] = useState(socail_links_data);
+        const [mobile_code, setMobileCode] = useState("US")
+        const [mobile_code_modal_visible, setMobileCodeModalVisibe] = useState(false)
+
       
-      ]);
-      const [selected_reports_to, setSelectReports] = useState("")
-      const [Industry_modal_visible, setReportsToModalVisibe] = useState(false)
-      const [reports_to_name, setIndustryName] = useState("")
 
+        const [preferred_contact, setpreferred_contacts] = useState(preferred_contact_data);
+        const [selected_preferred_contact, setSelectpreferred_contact] = useState("")
+        const [preferred_contact_modal_visible, setpreferred_contactsModalVisibe] = useState(false)
+        const [preferred_contact_name, setpreferred_contactName] = useState("")
 
-      ////// Country data 
+     
 
-      const [countrys, setcountrys] = useState(country_data);
+   
+        const [ReportsTo, setReportsTo] = useState(reports_to_data);
+        const [selected_reports_to, setSelectReports] = useState("")
+        const [Industry_modal_visible, setReportsToModalVisibe] = useState(false)
+        const [reports_to_name, setIndustryName] = useState("")
+   
+
+        const [countrys, setcountrys] = useState(country_data);
 
        //// State DATa
 
-       const [states, setstates] = useState(state_data);
-    const [selected_state, setSelectstate] = useState("")
-    const [state_modal_visible, setstatesModalVisibe] = useState(false)
-    const [state_name, setstateName] = useState("")
+        const [states, setstates] = useState(state_data);
+        const [selected_state, setSelectstate] = useState("")
+        const [state_modal_visible, setstatesModalVisibe] = useState(false)
+        const [state_name, setstateName] = useState("")
 
 
-    const [selected_country, setSelectcountry] = useState("")
-    const [country_modal_visible, setcountrysModalVisibe] = useState(false)
-    const [country_name, setcountryName] = useState("")
-
-
-    const [contact_profile, setContactProfile] = useState({
-      first_name:"",
-      first_name_error:"",
-      last_name:"",
-      last_name_error:"",
-      primary_email:"",
-      primary_email_error:"",
-      secondary_email:"",
-      secondary_email_error:"",
-      status:"",
-      status_error:"",
-      mobile:"",
-      mobile_error:"",
-      skills:["React-Native" , "React", "BlockChain","DB", "Data Analysis", "Content Writer SEO Specilist"],
-      profile_summary:"",
-      candidate_owner:"",
-      attach_resume:"",
-      phone_home:"",
-      phone_home_error:"",
-      phone_work:"",
-      phone_work_error:"",
-      phone_direct:"",
-      phone_direct_error:"",
-      fax:"",
-      fax_error:"",
-      emergency_contact:"",
-      emergency_contact_error:"",
-      emergency_no:"",
-      emergency_no_error:"",
-      socail_media:"",
-      socail_media_error:"",
-      address:"",
-      address_error:"",
-      city:"",
-      city_error:"",
-      zip:"",
-      zip_error:""
-  })
+        const [selected_country, setSelectcountry] = useState("")
+        const [country_modal_visible, setcountrysModalVisibe] = useState(false)
+        const [country_name, setcountryName] = useState("")
+        
+        const [contact_profile, setContactProfile] = useState(contactAddScreenInitialState)
        
 
         return (
@@ -610,7 +393,7 @@ import { country_data, state_data } from '../../data/data';
                         <Spacer height={scale(10)} />
                     </ScrollView>
                 </View>
-                {/* <AddCompnayModal /> */}
+               <AddContactModal />
             </SafeAreaView> 
         );
     };

@@ -8,7 +8,17 @@ import { width, wp } from '../constants/sacling';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons'
     const DropdownAddComponent = 
-    ({show_add_button=true,width=wp(84), AddButtonPress,placeholder,items,setItems,selectedItems,setSelectItems,isVisible,setIsVisible,company_name,setCompanyName}) => { 
+    ({
+            show_add_button=true,
+            width=wp(84), 
+            AddButtonPress,
+            placeholder,
+            items,setItems,
+            selectedItems,
+            setSelectItems,
+            isVisible,
+            setIsVisible,
+           }) => { 
         return (
             <View style={{marginTop:scale(5), backgroundColor:"#fff"}} >
                 <Text 
