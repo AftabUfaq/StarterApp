@@ -236,12 +236,12 @@ import { companies_data,contactsdata,Periortydata,technologydata,indstriesdata }
                             lableColor={colors.dark_primary_color}
                             borderRadius={scale(5)}
                             onAdd={(skill) => {
-                                let temp_skills = job_data.skills
+                                let temp_skills = [...job_data.skills]
                                 temp_skills.push(skill)
                                 setJobData({...job_data, skills:temp_skills})
                             }}
                             onChangeText={index => {
-                                let temp_skills = job_data.skills
+                                let temp_skills = [...job_data.skills]
                                 delete temp_skills[index]
                                 setJobData({...job_data, skills:temp_skills})
                             }}

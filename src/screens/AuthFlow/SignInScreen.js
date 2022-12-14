@@ -11,7 +11,7 @@ import {
 import CustomTextInput from '../../components/TextInput';
 import CustomButton from '../../components/Button';
 import {useDispatch} from 'react-redux';
-import { Login } from "../../store/actions/LoginActions";
+import {Login} from '../../store/actions/LoginActions';
 import {commonStyles, textStyles} from '../../styles';
 import {AppScreenWidth, width} from '../../constants/sacling';
 import {scale} from 'react-native-size-matters';
@@ -22,7 +22,7 @@ import {colors} from '../../constants/theme';
 import GOOGLE from '../../assets/images/google.svg';
 import CustomHeader from '../../components/CustomHeader';
 import MICROSOFT from '../../assets/images/microsoft.svg';
-import { candidateLogin } from '../../api';
+import {candidateLogin} from '../../api';
 const SignInScreen = ({navigation}) => {
   const [email_address, setUseremail] = useState('bacha@gmail.com'); // dr.aftabufaq@gmail.com
   const [UseremailErrorMesage, setUseremailErrorMessaage] = useState('');
@@ -30,7 +30,7 @@ const SignInScreen = ({navigation}) => {
   const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const  userLogin = (data) => dispatch(Login(data))
+  const userLogin = data => dispatch(Login(data));
   const submitdate = () => {
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (!reg.test(email_address)) {
@@ -46,32 +46,32 @@ const SignInScreen = ({navigation}) => {
     setLoading(true);
     setPasswordErrorMessage('');
     setUseremailErrorMessaage('');
-    let data ={
-      email_address:email_address,
-      userpassword:password,
-      type:"candidate"
-    }
-    candidateLogin(data).then((response) => {
-      setLoading(false);
-        if(response.status == 200){
-          if(response.data.status){
-            userLogin(response.data)
-          }else{
-            alert("Invalid crenditlas")
+    let data = {
+      email_address: email_address,
+      userpassword: password,
+      type: 'candidate',
+    };
+    candidateLogin(data)
+      .then(response => {
+        setLoading(false);
+        if (response.status == 200) {
+          if (response.data.status) {
+            userLogin(response.data);
+          } else {
+            alert('Invalid crenditlas');
           }
-        }else{
-          alert("error")
+        } else {
+          alert('error');
         }
-    }).catch((err) => {
-      setLoading(false);
-      console.log(err);
-    })
+      })
+      .catch(err => {
+        setLoading(false);
+        console.log(err);
+      });
   };
   return (
     <View style={commonStyles.container}>
-        <CustomHeader 
-          title={"Sign In"}
-        />
+      <CustomHeader title={'Sign In'} />
       <ScrollView
         contentContainerStyle={{
           backgroundColor: '#fff',

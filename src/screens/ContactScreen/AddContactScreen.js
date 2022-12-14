@@ -12,7 +12,7 @@ import Spacer from '../../components/Spacer';
 import MobileNumberInput from '../../components/MobileNumberInput';
 import CountryModal from '../../components/CountryModal'
 import { wp } from '../../constants/sacling';
-import AddCompnayModal from '../../components/AddCompnayModal';
+
 import { company_names_data, company_owner_list_data, company_status_data, contactAddScreenInitialState, country_data, preferred_contact_data, reports_to_data, socail_links_data, state_data } from '../../data/data';
 import AddContactModal from '../../components/AddContactModal';
     const AddContactScreen = ({navigation}) => { 
@@ -56,20 +56,18 @@ import AddContactModal from '../../components/AddContactModal';
         const [reports_to_name, setIndustryName] = useState("")
    
 
-        const [countrys, setcountrys] = useState(country_data);
+      
 
-       //// State DATa
+       //// State Data
 
         const [states, setstates] = useState(state_data);
         const [selected_state, setSelectstate] = useState("")
         const [state_modal_visible, setstatesModalVisibe] = useState(false)
-        const [state_name, setstateName] = useState("")
-
-
+      
+        const [countrys, setcountrys] = useState(country_data);
         const [selected_country, setSelectcountry] = useState("")
         const [country_modal_visible, setcountrysModalVisibe] = useState(false)
-        const [country_name, setcountryName] = useState("")
-        
+   
         const [contact_profile, setContactProfile] = useState(contactAddScreenInitialState)
        
 
@@ -361,8 +359,7 @@ import AddContactModal from '../../components/AddContactModal';
                             setSelectItems={setSelectcountry}
                             isVisible={country_modal_visible}
                             setIsVisible={setcountrysModalVisibe}
-                            company_name={country_name}
-                            setCompanyName={setcountryName}
+                           
                         />
 
                       <DropdownAddComponent 
@@ -376,8 +373,7 @@ import AddContactModal from '../../components/AddContactModal';
                             setSelectItems={setSelectstate}
                             isVisible={state_modal_visible}
                             setIsVisible={setstatesModalVisibe}
-                            company_name={state_name}
-                            setCompanyName={setstateName}
+                          
                         />
 
                         

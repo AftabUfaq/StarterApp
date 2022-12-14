@@ -33,10 +33,21 @@ import { width, wp } from '../constants/sacling';
       const [country, setCountry] = useState(country_data)
       function reducer(state, action) {
           switch (action.type) {
-              case "companyname":
-                return { ...state, companyname:action.payload };
-              default:
-                  return initialState
+            case "firstname":
+                return { ...state, firstname:action.payload };
+            case "secondname":
+                return { ...state, secondname:action.payload };
+            case "jobtitle":
+                return { ...state, jobtitle:action.payload };
+            case "primaryemail":
+                return { ...state, primaryemail:action.payload };
+            case "phonedirect":
+                return { ...state, phonedirect:action.payload };
+            case "city":
+                return { ...state, city:action.payload };
+                
+            default:
+                return initialState
           }
       }
   return (
@@ -48,17 +59,75 @@ import { width, wp } from '../constants/sacling';
             contentContainerStyle={{alignItems:"center",width:width, justifyContent:"center"}}
             showsVerticalScrollIndicator={false} >
             <CustomTextInput
-                placeholder={'Company name'}
-                value={compayformdata.companyname}
+                placeholder={'First name'}
+                value={compayformdata.firstname}
                 borderWidth={1}
                 lableColor={colors.dark_primary_color}
                 borderRadius={scale(5)}
                 onChangeText={text => {
-                  dispatch({type:"companyname", payload:text})
+                  dispatch({type:"firstname", payload:text})
                 }}
                 errorMessage={""}
             />
-             <DropdownAddComponent 
+            <CustomTextInput
+                placeholder={'Last name'}
+                value={compayformdata.secondname}
+                borderWidth={1}
+                lableColor={colors.dark_primary_color}
+                borderRadius={scale(5)}
+                onChangeText={text => {
+                  dispatch({type:"secondname", payload:text})
+                }}
+                errorMessage={""}
+            />
+            <CustomTextInput
+                placeholder={'Job Title'}
+                value={compayformdata.jobtitle}
+                borderWidth={1}
+                lableColor={colors.dark_primary_color}
+                borderRadius={scale(5)}
+                onChangeText={text => {
+                  dispatch({type:"jobtile", payload:text})
+                }}
+                errorMessage={""}
+            />
+
+            <CustomTextInput
+                placeholder={'Primary Email'}
+                value={compayformdata.primaryemail}
+                borderWidth={1}
+                lableColor={colors.dark_primary_color}
+                borderRadius={scale(5)}
+                onChangeText={text => {
+                  dispatch({type:"primaryemail", payload:text})
+                }}
+                errorMessage={""}
+            />
+
+            <CustomTextInput
+                placeholder={'Phone Direct'}
+                value={compayformdata.phonedirect}
+                borderWidth={1}
+                lableColor={colors.dark_primary_color}
+                borderRadius={scale(5)}
+                onChangeText={text => {
+                  dispatch({type:"phonedirect", payload:text})
+                }}
+                errorMessage={""}
+            />
+            
+            <CustomTextInput
+                placeholder={'City'}
+                value={compayformdata.city}
+                borderWidth={1}
+                lableColor={colors.dark_primary_color}
+                borderRadius={scale(5)}
+                onChangeText={text => {
+                  dispatch({type:"city", payload:text})
+                }}
+                errorMessage={""}
+            />
+            <DropdownAddComponent 
                 show_add_button={false}
                 width={wp(96)}
               
